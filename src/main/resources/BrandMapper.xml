@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace:名称空间
+-->
+<mapper namespace="mapper.BrandMapper">
+
+<!--    <select id="selectAll" resultType="Brand">-->
+<!--        select * from motor_brand;-->
+<!--    </select>-->
+
+<!--    <select id="selectById" resultType="Brand">-->
+<!--        select *-->
+<!--        from motor_brand where id = #{id};-->
+
+<!--    </select>-->
+    <resultMap id="brandResultMap" type="brand">
+        <!-- id：完成主键字段的映射
+        column：表的列名
+        property：实体类的属性名
+        result：完成一般字段的映射
+        column：表的列名 property：
+        实体类的属性名 -->
+        <result column="brandName" property="brandName"/>
+
+    </resultMap>
+    <select id="selectById" resultMap="brandResultMap">
+        select *
+        from motor_brand where id = #{id};
+
+    </select>
+
+    <select id="select" resultMap="brandResultMap">
+        select * from motor_brand where id=#{id} and brandName=#{brandName};
+    </select>
+
+
+
+</mapper>

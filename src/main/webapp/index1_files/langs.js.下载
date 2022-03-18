@@ -1,0 +1,201 @@
+﻿//function
+
+function updateBrandSel(){
+	if (!(typeof(Battery)=="undefined")){	
+		var obj=$("#inBattBrand");
+		obj.children("option[value="+(-1)+"]").html(langDict["inChosenCustomText"]);
+		obj.children("option[value="+(0)+"]").html(langDict["inChosenCommonText"]);		
+		
+		var hasLan = 	BatteryLang.length == Battery.length;
+		for(var i=1;i<Battery.length;i++){
+			if(BatteryLang[i]!="" && hasLan){
+				obj.children("option[value="+i+"]").html(Battery[i][0]+" ( "+BatteryLang[i]+" )");
+			} else {
+				obj.children("option[value="+i+"]").html(Battery[i][0]);
+			}				
+		}		
+
+		var obj=$("#inPropBrand");
+		obj.children("option[value="+(-1)+"]").html(langDict["inChosenCustomText"]);	
+		hasLan = 	PropellerLang.length == Propeller.length;		
+		for(var i=0;i<Propeller.length;i++){	
+			if(PropellerLang[i]!="" && hasLan){
+				obj.children("option[value="+i+"]").html(Propeller[i][0]+" ( "+PropellerLang[i]+" )");
+			} else {
+				obj.children("option[value="+i+"]").html(Propeller[i][0]);
+			}	
+		}
+		obj=$("#inESCBrand");
+		obj.children("option[value="+(-1)+"]").html(langDict["inChosenCustomText"]);
+		obj.children("option[value="+(0)+"]").html(langDict["inChosenCommonText"]);		
+		hasLan = 	ESCLang.length == ESC.length;		
+		for(var i=1;i<ESC.length;i++){	
+			if(ESCLang[i]!="" && hasLan){
+				obj.children("option[value="+i+"]").html(ESC[i][0]+" ( "+ESCLang[i]+" )");
+			} else {
+				obj.children("option[value="+i+"]").html(ESC[i][0]);
+			}						
+		}	
+
+
+		var obj=$("#inMotorBrand");
+		obj.children("option[value="+(-1)+"]").html(langDict["inChosenCustomText"]);	
+		hasLan = 	MotorLang.length == Motor.length;		
+		for(var i=0;i<Motor.length;i++){	
+			if(MotorLang[i]!="" && hasLan){
+				obj.children("option[value="+i+"]").html(Motor[i][0]+" ( "+MotorLang[i]+" )");
+			} else {
+				obj.children("option[value="+i+"]").html(Motor[i][0]);
+			}	
+		}
+		
+		obj=$("#UAVModel");
+		obj.html("");
+		for(var i=0;i<UAVData.length;i++){	
+			obj.append("<option value="+i+">"+UAVTypeName[UAVData[i][0]]+UAVData[i][1]+"<\/option>");
+		}
+
+		
+		$("#inMotorBrand").trigger("liszt:updated");
+		$("#inESCBrand").trigger("liszt:updated");	
+		$("#inBattBrand").trigger("liszt:updated");	
+		$("#inPropBrand").trigger("liszt:updated");		
+	  $("#UAVModel").trigger("liszt:updated");	
+		
+		if(parseInt($("#inMotorBrand").val())==-1){
+			if($("#inMotAdvTr").css("display")=="none"){
+				$("#inMotorType_chzn").find("a span").text(langDict["inChosenSelText"]);
+				$("#inMotorBrand_chzn").find("a span").text(langDict["inChosenSelText"]);			
+			}	else{			
+				$("#inMotorType_chzn").find("a span").text("");				
+			}				
+		}
+
+		if(parseInt($("#inPropBrand").val())==-1){
+			if($("#inPropAdvTr").css("display")=="none"){
+				$("#inPropType_chzn").find("a span").text(langDict["inChosenSelText"]);
+				$("#inPropBrand_chzn").find("a span").text(langDict["inChosenSelText"]);		
+			}	else{			
+				$("#inPropType_chzn").find("a span").text("");				
+			}				
+		}		
+
+		if(parseInt($("#inESCBrand").val())==-1){
+			if($("#inESCAdvTr").css("display")=="none"){
+				$("#inESCType_chzn").find("a span").text(langDict["inChosenSelText"]);
+				$("#inESCBrand_chzn").find("a span").text(langDict["inChosenSelText"]);		
+			}	else{			
+				$("#inESCType_chzn").find("a span").text("");				
+			}				
+		}		
+
+		if(parseInt($("#inBattBrand").val())==-1){
+			if($("#inBattAdvTr").css("display")=="none"){
+				$("#inBattBrand_chzn").find("a span").text(langDict["inChosenSelText"]);
+				$("#inBattType_chzn").find("a span").text(langDict["inChosenSelText"]);				
+			}	else{			
+				$("#inBattType_chzn").find("a span").text("");				
+			}				
+		}	
+		
+		$("#UAVModel_chzn").find("a span").text(langDict["inChosenSelTextUAV"]);	
+		
+		CalErrShow();
+		CalShareShow();
+		$("#outShareBar").html("");
+		//$("#outShareText").html(langDict["outShareText"]);
+		$("#outShareBar").share();		
+				
+	}		
+}
+
+
+
+function applyItemLang(inLang){
+
+	if(inLang=="zh"){
+		if("zh"==langDict["preLang"]){
+			return;
+		}
+		jQuery.cookie("LangCookie", "zh"); 
+		//setLangDictZh();
+		setLangDict("zh");
+		$("[id=VideoPolyv]").trigger("click");
+	}	else {
+		if("en"==langDict["preLang"]){
+			return;
+		}		
+		jQuery.cookie("LangCookie", "en"); 
+		//setLangDictEn();	
+		setLangDict("en");
+		$("[id=VideoYoutube]").trigger("click");								
+	}	
+
+	
+	if(!($("#uiHomeText").html()==langDict["uiHomeText"])){
+		$(document).attr("title",langDict["title"]);
+		$("meta[name='description']").attr('content',langDict["descrip"]);
+		$("meta[name='keywords']").attr('content',langDict["keywo"]);
+		$("#inPropDiaUnit").html(langDict["inlenInchUnit"]);
+		$("#inPropPitchUnit").html(langDict["inlenInchUnit"]);
+		$("#inWindDegUnit").html(langDict["inWindDegUnit"]);	
+		
+		$("[id$='Text']").each(function(){
+			if(langDict[this.id]!="" && langDict[this.id]!=null){
+				this.innerHTML=langDict[this.id];				
+			}	
+			var helpMsg=langDict[this.id+"Help"];
+			if(helpMsg!="" && helpMsg!=null){
+				$(this).attr("title",helpMsg);
+			}	else{
+				$(this).attr("title","");
+			}		
+		});
+/*
+		$("option[id$='Text']").each(function(){
+			if(langDict[this.id]!="" && langDict[this.id]!=null){
+				this.innerHTML=langDict[this.id];					
+			}
+			var helpMsg=langDict[this.id+"Help"];
+			if(helpMsg!="" && helpMsg!=null){
+				$(this).attr("title",helpMsg);
+			}	else{
+				$(this).attr("title","");
+			}	
+		});
+		*/
+	}
+
+	updateBrandSel();
+
+}
+
+
+function setLang(){
+	if(lang=="zh"){
+		applyItemLang("zh")		
+	}else if(lang=="en"){
+		applyItemLang("en");		
+	}else{
+		applyItemLang("en");		
+	}		
+}	
+
+function rollUp(obj){
+	var obj1=$(obj).parent().parent();
+	obj1.slideUp();
+	
+}
+
+setLang();
+if($(".chzn-select").length!=0){
+	$(".chzn-select").chosen(); 
+	$("#inMotorType_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inPropType_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inESCType_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inBattType_chzn").find("a span").text(langDict["inChosenSelText"]);	
+	$("#inMotorBrand_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inPropBrand_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inESCBrand_chzn").find("a span").text(langDict["inChosenSelText"]);
+	$("#inBattBrand_chzn").find("a span").text(langDict["inChosenSelText"]);
+}

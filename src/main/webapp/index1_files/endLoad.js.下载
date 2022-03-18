@@ -1,0 +1,486 @@
+﻿
+var obj=$("#inBattBrand");
+obj.html("");
+obj.append("<option value="+(-1)+">"+langDict["inChosenCustomText"]+"<\/option>");
+obj.append("<option value="+(0)+">"+langDict["inChosenCommonText"]+"<\/option>");
+for(var i=1;i<Battery.length;i++){	
+	obj.append("<option value="+i+">"+Battery[i][0]+"<\/option>");
+}
+
+
+obj.change(function(){
+
+
+	var BattIndex = parseInt($("#inBattBrand").val());		
+	$("#inBattType").html("");
+		
+	if(BattIndex!=-1){
+		for(var i=1;i<Battery[BattIndex].length;i++){	
+			$("#inBattType").append("<option value="+i+">"+Battery[BattIndex][i]+"<\/option>");
+		}				
+		$("#inBattAdvTr").css("display","none");	
+		$("#inBattType").trigger("liszt:updated");								
+	} else {			
+		$("#inBattAdvTr").css("display","");		
+		$("#inBattType").trigger("liszt:updated");	
+	  $("#inBattType_chzn").find("a span").text("");					
+	}	
+	
+	
+	if(BattIndex==0){
+		$("#inBattComSNumTd").css("display","");		
+	}else{
+		$("#inBattComSNumTd").css("display","none");				
+	}	
+	
+	if(BattIndex!=-1&&BattIndex!=0){
+		$("#inBattSNumTd").css("display","");		
+	}else{
+		$("#inBattSNumTd").css("display","none");				
+	}		
+	
+	
+	if(BattIndex == -1){
+		$("#inBattTypeTD").css("display","none");
+		$("#inBattTypeTD1").css("display","");
+	} else {
+		$("#inBattTypeTD").css("display","");
+		$("#inBattTypeTD1").css("display","none");
+	}	
+	//$("#inBattType").css("dispaly","none");	
+});	
+
+
+obj=$("#inBattType1");
+obj.html("");
+
+for(var i=0;i<BattType.length;i++){
+	if(i==0){
+		obj.append("<option value="+i+" selected=''>"+BattType[i]+"<\/option>");
+	}else{
+		obj.append("<option value="+i+">"+BattType[i]+"<\/option>");			
+	}			
+}	
+
+
+//obj=$("#inBattCapa");
+//obj.html("");	
+//for(var i=0;i<BattCapa.length;i++){
+//	if(parseInt(BattCapa[i])==5000){
+//		obj.append("<option value="+i+" selected=''>"+BattCapa[i]+"<\/option>");
+//	}else{
+//		obj.append("<option value="+i+">"+BattCapa[i]+"<\/option>");			
+//	}	
+//
+//}		
+
+
+//obj=$("#inBattCur");
+//obj.html("");	
+//for(var i=0;i<BattCur.length;i++){
+//	if(i==4){
+//		obj.append("<option value="+i+" selected=''>"+BattCur[i]+"<\/option>");
+//	}else{
+//		obj.append("<option value="+i+">"+BattCur[i]+"<\/option>");			
+//	}	
+//}	
+
+obj=$("#inESCBrand");
+obj.html("");
+obj.append("<option value="+(-1)+">"+langDict["inChosenCustomText"]+"<\/option>");
+obj.append("<option value="+(0)+">"+langDict["inChosenCommonText"]+"<\/option>");
+
+for(var i=1;i<ESC.length;i++){	
+	obj.append("<option value="+i+">"+ESC[i][0]+"<\/option>");
+}
+
+obj.change(function(){
+	var ESCIndex = parseInt($("#inESCBrand").val());		
+	$("#inESCType").html("");		
+	if(ESCIndex!=-1){
+		for(var i=1;i<ESC[ESCIndex].length;i++){	
+			$("#inESCType").append("<option value="+i+">"+ESC[ESCIndex][i]+"<\/option>");
+		}		
+		$("#inESCAdvTr").css("display","none");	
+		$("#inESCType").trigger("liszt:updated");		
+	} else {	
+		$("#inESCAdvTr").css("display","");		
+		$("#inESCType").trigger("liszt:updated");	
+	  $("#inESCType_chzn").find("a span").text("");					
+	}	
+	
+	if(ESCIndex == -1){
+		$("#inESCTypeTD").css("display","none");
+		$("#inESCTypeTD1").css("display","");
+	} else {
+		$("#inESCTypeTD").css("display","");
+		$("#inESCTypeTD1").css("display","none");
+	}		
+	
+});	
+
+
+
+
+obj=$("#inPropBrand");
+obj.html("");
+obj.append("<option value="+(-1)+">"+langDict["inChosenCustomText"]+"<\/option>");
+
+for(var i=0;i<Propeller.length;i++){	
+	obj.append("<option value="+i+">"+Propeller[i][0]+"<\/option>");
+}
+
+obj.change(function(){
+	var PropIndex = parseInt($("#inPropBrand").val());		
+	$("#inPropType").html("");		
+	if(PropIndex!=-1){
+		for(var i=1;i<Propeller[PropIndex].length;i++){	
+			$("#inPropType").append("<option value="+i+">"+Propeller[PropIndex][i]+"<\/option>");
+		}		
+		$("#inPropAdvTr").css("display","none");	
+		$("#inPropType").trigger("liszt:updated");		
+	} else {	
+		$("#inPropAdvTr").css("display","");		
+		$("#inPropType").trigger("liszt:updated");	
+	  $("#inPropType_chzn").find("a span").text("");					
+	}	
+	
+	if(PropIndex == -1){
+		$("#inPropTypeTD").css("display","none");
+		$("#inPropTypeTD1").css("display","");
+	} else {
+		$("#inPropTypeTD").css("display","");
+		$("#inPropTypeTD1").css("display","none");
+	}	
+	
+	
+});	
+
+
+obj=$("#inMotorBrand");
+obj.html("");	
+
+obj.append("<option value="+(-1)+">"+langDict["inChosenCustomText"]+"<\/option>");
+for(var i=0;i<Motor.length;i++){	
+	obj.append("<option value="+i+">"+Motor[i][0]+"<\/option>");
+}
+
+obj.change(function(){
+	var MotorIndex = parseInt($("#inMotorBrand").val());	
+		
+	$("#inMotorType").html("");	
+	if(MotorIndex!=-1){
+
+		for(var i=1;i<Motor[MotorIndex].length;i++){	
+			$("#inMotorType").append("<option value="+i+">"+Motor[MotorIndex][i]+"<\/option>");
+		}					
+			
+		$("#inMotAdvTr").css("display","none");	
+		$("#inMotorType").trigger("liszt:updated");		
+	}else{
+	
+		$("#inMotAdvTr").css("display","");		
+		$("#inMotorType").trigger("liszt:updated");	
+	  $("#inMotorType_chzn").find("a span").text("");					
+	}
+
+	if(MotorIndex == -1){
+		$("#inMotorTypeTD").css("display","none");
+		$("#inMotorTypeTD1").css("display","");
+	} else {
+		$("#inMotorTypeTD").css("display","");
+		$("#inMotorTypeTD1").css("display","none");
+	}
+	
+});	
+
+
+
+$(".batSelec1").each(function(){
+	$(this).html("");
+	for(var i=0;i<20;i++){	
+		if(i==0){
+			$(this).append("<option value="+(i+1)+" selected=''>"+(i+1)+"<\/option>");
+		}else{
+			$(this).append("<option value="+(i+1)+">"+(i+1)+"<\/option>");
+		}
+	}		
+});
+
+$(".batSelec3").each(function(){
+	$(this).html("");
+	for(var i=0;i<20;i++){	
+		if(i==2){
+			$(this).append("<option value="+(i+1)+" selected=''>"+(i+1)+"<\/option>");
+		}else{
+			$(this).append("<option value="+(i+1)+">"+(i+1)+"<\/option>");
+		}
+	}		
+});
+
+
+
+
+obj=$("#UAVModel");
+obj.html("");
+for(var i=0;i<UAVData.length;i++){	
+	obj.append("<option value="+i+">"+UAVTypeName[UAVData[i][0]]+UAVData[i][1]+"<\/option>");
+}
+
+obj.change(function(){
+	var UAVIndex = parseInt($("#UAVModel").val());	
+	var TypeStr = UAVData[UAVIndex][2];
+	var	TypeStrS = TypeStr.split(";");
+	
+	
+	var	init=TypeStrS[0].split(",");
+	var	constraint=TypeStrS[1].split(",");
+	var	motorData=TypeStrS[2].split(",");
+	var	proData=TypeStrS[3].split(",");
+	var	ESCData=TypeStrS[4].split(",");
+	var	BattData=TypeStrS[5].split(",");
+
+
+$("#inFrameShTitle").html('<img class="flag" src="images/frame/'+init[0]+'.png" /><span class="value">'+init[0]+'</span>');
+$("#inTWeightOp").val(init[1]);
+$("#inTWeight").val(init[2]);
+$("#inFrLen").val(init[3]);
+$("#inAlt").val(init[4]);
+$("#inTemp").val(init[5]);
+$("#inShapAero").val(init[6]);
+			
+			
+			
+$("#inTBatRanCuSel").val(constraint[0]);
+$("#inSafePow").val(constraint[1]);
+$("#inMaxTilt").val(constraint[2]);	
+$("#inAddCur").val(constraint[3]);
+	
+ 
+
+	if(BattData[0]==''){
+		$("#inBattBrand").val(-1);
+		$("#inBattBrand").trigger("liszt:updated");			
+		$("#inBattAdvTr").css("display","");		
+		$("#inBattType").trigger("liszt:updated");	
+	  $("#inBattType_chzn").find("a span").text("");		
+		$("#inBattTypeTD").css("display","none");
+		$("#inBattTypeTD1").css("display","");	 	
+		$("#inBattSNumTd").css("display","none");	
+		
+		if(BattData[4]=="Ni-MH"){
+			$("#inBattType1").val(2);
+		}else if(BattData[4]=="HV-LiPo"){
+			$("#inBattType1").val(1);
+		}else{
+			$("#inBattType1").val(0);
+		}
+		$("#inBattSeries").val(BattData[5]);
+		$("#inBattCapa").val(BattData[7]);
+		$("#inBattCur").val(BattData[8]);
+		$("#inBattRe").val(BattData[9]);
+		$("#inBattWeight").val(BattData[10]);
+
+		
+	}else{
+		
+		var BattIndex = -2;
+		var BattTypeIndex = -2;
+		for(var i=0;i<Battery.length;i++){
+			if(Battery[i][0]==BattData[0]){
+				BattIndex=i;
+				for(var j=1;j<Battery[BattIndex].length;j++){
+					if(Battery[i][j]==BattData[1]){
+						BattTypeIndex=j;
+					}
+				}
+				break;
+			}
+		}
+		
+
+		
+		$("#inBattBrand").val(BattIndex);
+		$("#inBattBrand").trigger("liszt:updated");			
+		$("#inBattBrand").change();
+		$("#inBattType").val(BattTypeIndex);
+		$("#inBattType").trigger("liszt:updated");					
+		$("#inBattAdvTr").css("display","none");				
+		$("#inBattTypeTD").css("display","");
+		$("#inBattTypeTD1").css("display","none");		
+
+		if(BattIndex=0){
+			$("#inBattComSNum").val(BattData[2]);	
+			$("#inBattComParal").val(BattData[3]);
+			$("#inBattSNumTd").css("display","");					
+		}else{
+			$("#inBattSNumTd").css("display","none");	
+		}
+	
+	}
+ 
+
+ 
+ 
+	if(ESCData[0]==''){
+		$("#inESCBrand").val(-1);
+		$("#inESCBrand").trigger("liszt:updated");			
+		$("#inESCAdvTr").css("display","");		
+		$("#inESCType").trigger("liszt:updated");	
+	  $("#inESCType_chzn").find("a span").text("");		
+		$("#inESCTypeTD").css("display","none");
+		$("#inESCTypeTD1").css("display","");	 	
+		
+		$("#inESCContI").val(ESCData[2]);
+		$("#inESCMaxV").val(ESCData[3]);
+		$("#inESCR").val(ESCData[4]);
+		$("#inESCWeight").val(ESCData[5]);	
+
+		
+	}else{
+		
+		var ESCIndex = -2;
+		var ESCTypeIndex = -2;
+		for(var i=0;i<ESC.length;i++){
+			if(ESC[i][0]==ESCData[0]){
+				ESCIndex=i;
+				for(var j=1;j<ESC[ESCIndex].length;j++){
+					if(ESC[i][j]==ESCData[1]){
+						ESCTypeIndex=j;
+					}
+				}
+				break;
+			}
+		}
+
+		$("#inESCBrand").val(ESCIndex);
+		$("#inESCBrand").trigger("liszt:updated");			
+		$("#inESCBrand").change();
+		$("#inESCType").val(ESCTypeIndex);
+		$("#inESCType").trigger("liszt:updated");					
+		$("#inESCAdvTr").css("display","none");				
+		$("#inESCTypeTD").css("display","");
+		$("#inESCTypeTD1").css("display","none");		
+	
+	}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	  	
+	if(proData[0]==''){
+		$("#inPropBrand").val(-1);
+		$("#inPropBrand").trigger("liszt:updated");			
+		$("#inPropAdvTr").css("display","");		
+		$("#inPropType").trigger("liszt:updated");	
+	  $("#inPropType_chzn").find("a span").text("");		
+		$("#inPropTypeTD").css("display","none");
+		$("#inPropTypeTD1").css("display","");	 	
+		
+		$("#inPropDia").val(proData[2]);
+		$("#inPropPitch").val(proData[3]);
+		$("#inPropblade").val(proData[4]);
+		$("#inPropWeight").val(proData[5]);	
+		
+		
+	}else{
+		
+		var PropIndex = -2;
+		var PropTypeIndex = -2;
+		for(var i=0;i<Propeller.length;i++){
+			if(Propeller[i][0]==proData[0]){
+				PropIndex=i;
+				for(var j=1;j<Propeller[PropIndex].length;j++){
+					if(Propeller[i][j]==proData[1]){
+						PropTypeIndex=j;
+					}
+				}
+				break;
+			}
+		}
+
+		$("#inPropBrand").val(PropIndex);
+		$("#inPropBrand").trigger("liszt:updated");			
+		$("#inPropBrand").change();
+		$("#inPropType").val(PropTypeIndex);
+		$("#inPropType").trigger("liszt:updated");					
+		$("#inPropAdvTr").css("display","none");				
+		$("#inPropTypeTD").css("display","");
+		$("#inPropTypeTD1").css("display","none");		
+	
+	}
+
+
+
+	if(motorData[0]==''){
+		$("#inMotorBrand").val(-1);
+		$("#inMotorBrand").trigger("liszt:updated");			
+		$("#inMotAdvTr").css("display","");		
+		$("#inMotorType").trigger("liszt:updated");	
+	  $("#inMotorType_chzn").find("a span").text("");		
+		$("#inMotorTypeTD").css("display","none");
+		$("#inMotorTypeTD1").css("display","");	 	
+		
+		$("#inMotorKv").val(motorData[2]);
+		$("#inNoLoCur").val(motorData[3]);
+		$("#inNoLoVo").val(motorData[4]);
+		$("#inMotorLimitCur").val(motorData[5]);
+		if(motorData[6]=="W"){
+			$("#inMotorLimitCurType").val(0);
+		}else{
+			$("#inMotorLimitCurType").val(1);
+		}
+		$("#inMotorR").val(motorData[7]);
+		$("#inChoOutLen").val(motorData[8]);
+		$("#inMotorWeight").val(motorData[9]);	
+		
+		
+	}else{
+		
+		var motIndex = -2;
+		var motTypeIndex = -2;
+		for(var i=0;i<Motor.length;i++){
+			if(Motor[i][0]==motorData[0]){
+				motIndex=i;
+				for(var j=1;j<Motor[motIndex].length;j++){
+					if(Motor[i][j]==motorData[1]){
+						motTypeIndex=j;
+					}
+				}
+				break;
+			}
+		}
+
+		$("#inMotorBrand").val(motIndex);
+		$("#inMotorBrand").trigger("liszt:updated");			
+		$("#inMotorBrand").change();
+		$("#inMotorType").val(motTypeIndex);
+		$("#inMotorType").trigger("liszt:updated");					
+		$("#inMotAdvTr").css("display","none");				
+		$("#inMotorTypeTD").css("display","");
+		$("#inMotorTypeTD1").css("display","none");		
+	
+	}
+
+
+
+
+
+
+
+
+});	
+
+
+
+//$(".chzn-select").chosen(); 
+//$("#inMotorType_chzn").find("a span").text(langDict["inChosenSelText"]);
+//$("#inPropType_chzn").find("a span").text(langDict["inChosenSelText"]);
+//$("#inESCType_chzn").find("a span").text(langDict["inChosenSelText"]);
+//$("#inBattType_chzn").find("a span").text(langDict["inChosenSelText"]);	
+//setLang();
+updateBrandSel();
+//CalShareShow();

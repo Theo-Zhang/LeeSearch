@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace:名称空间
+-->
+<mapper namespace="mapper.MotorTypeMapper">
+
+    <select id="selectAll" resultType="MotorType">
+        select * from motor_type;
+    </select>
+
+    <select id="selectById" resultType="MotorType">
+        select * from motor_type where id = #{id};
+
+    </select>
+
+</mapper>

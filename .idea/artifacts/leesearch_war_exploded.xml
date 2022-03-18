@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="leesearch:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/leesearch_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="leesearch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.36" />
+          <element id="library" level="project" name="Maven: org.jetbrains:annotations:23.0.0" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.5" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.20" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.79" />
+          <element id="library" level="project" name="fitting" />
+          <element id="library" level="project" name="javabuilder" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="leesearch/web/Web" />
+    </root>
+  </artifact>
+</component>

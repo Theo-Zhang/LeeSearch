@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--
+    Brand MotorType是放在 pojo 包里的，包里可能也会存在其他多个 JavaBean，这时候一个一个配置别名就会很麻烦，这时候就需要批量定义别名，
+    批量指定很简单，只要指定包名即可，之后程序会为包下的所有类都自动加上别名，其定义别名的规范就是对应包装类的类名首字母变为小写
+
+-->
+    <typeAliases>
+        <package name="pojo"/>
+    </typeAliases>
+    
+    <!--
+    environments：配置数据库连接环境信息。可以配置多个environment，通过default属性切换不同的environment
+    -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--数据库连接信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///rotor?useSSL=false"/>
+                <!--当前数据库的名称和密码-->
+                <property name="username" value="root"/>
+                <property name="password" value="793358"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--数据库连接信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///root?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="793358"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--加载sql映射文件-->
+        <mapper resource="BrandMapper.xml"/>
+        <mapper resource="MotorTypeMapper.xml"/>
+
+<!--        &lt;!&ndash;Mapper代理方式&ndash;&gt;-->
+<!--        <package name="mapper"/>-->
+
+    </mappers>
+
+</configuration>

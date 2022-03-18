@@ -1,0 +1,1235 @@
+﻿function heredoc(fn) {
+    return fn.toString().split('\n').slice(1,-1).join('\n') + '\n'
+}
+
+function setLangDict(lan){
+	if(lan=="en"){
+		langDict=new Array();
+		langDict["preLang"]="en";
+
+		langDict["title"]="flyeval - Flight Performance Evaluation of UAVs|estimate performance of UAV|multicopter|multirotor|quadcopter|quadrotor performance evaluation|endurance calculation";	
+		langDict["descrip"]="A performance evaluation website for multicopters or multirotors . Users can obtain the detail evaluations after providing the body frame parameters, the environment and propulsion system parameters.";
+		langDict["keywo"]="flyeval,multicopter,multirotor,quadrotor,quadcopter,rotor,copter,UAV,flying,evaluation,performance,test,motor,propeller,calculation,calc,Model,battery,esc,electric";
+		
+		langDict["uiLabNameText"]="Flight Evaluation";
+		$(".LabName").css("margin-top","30px");	
+		
+
+		langDict["uiHomeText"]="HOME";	
+		langDict["uiNewsText"]="NEWS";
+		langDict["uiHelpText"]="HELP";
+		langDict["uiForumText"]="<span style='color:#f00;'>FORUM (beta)<span>";
+		
+		langDict["uiCourseText"]="<span style='color:#f00;'>COURSE (New)<span>";
+
+		langDict["uiAboutText"]="ABOUT US";	
+		
+		langDict["uiContactText"]="CONTACT";
+		langDict["uiLangText"]="LANGUAGE ▼";
+		langDict["uiLang0Text"]="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		langDict["uiLang1Text"]="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中文&nbsp;&nbsp;&nbsp;&nbsp;";	
+
+		langDict["News1Text"]="News [1]：The performance evaluation algorithm is published as journal article: D. Shi, X. Dai, X. Zhang, and Q. Quan, “A practical performance evaluation method for electric multicopters,” IEEE/ASME Transactions on Mechatronics, vol. 22, no. 3, pp. 1337–1348, 2017. <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.bib'>[BibTex]</a>, <a  target='_blank'  href='http://flyeval.com/paper/'>[Paper Algorithm]</a>";	
+		langDict["News2Text"]="News [2]：For more information about multiopters, see our textbook \"Introduction to Multicopter Design and Control\". It is available at <a target='_blank' href='http://www.springer.com/in/book/9789811033810'>[Springer]</a> <a target='_blank' href='https://www.amazon.cn/dp/9811033811'>[Amazon]</a>";	
+		langDict["News3Text"]="News [3]：Part of the rapid design algorithm is published as journal article: X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “An Analytical Design Optimization Method for Electric Propulsion Systems of Multicopter UAVs with Desired Hovering Endurance,” IEEE/ASME Transactions on Mechatronics, vol. 24, no. 1, pp. 228–239, 2019. <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.bib'>[BibTex]</a>";	
+		langDict["News4Text"]="News [4]：Part of the efficiency optimization algorithm is published as journal article: X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “Efficiency Optimization and Component Selection for Propulsion Systems of Electric Multicopters. IEEE Transactions on Industrial Electronics, vol. 66, no. 10, pp. 7800–7809, 2019. <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.bib'>[BibTex]</a>";	
+		langDict["News5Text"]="News [5]：Part of the modeling and simulation method is published as journal article: X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “Simulation Credibility Assessment Methodology With FPGA-based Hardware-in-the-Loop Platform,” IEEE Transactions on Industrial Electronics, vol. 68, no. 4, pp. 3282-3291, 2021. <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.bib'>[BibTex]</a>";	
+		langDict["News6Text"]="News [6]：Part of the simulation and test method is published as journal article: X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “RFlySim: Automatic test platform for UAV autopilot systems with FPGA-based hardware-in-the-loop simulations,”  Aerospace Science and Technology, vol. 114, p. 106727, 2021. <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.bib'>[BibTex]</a>";	
+
+		
+		//Item title
+		langDict["inFrameShTitle"]="Frame Shape";	
+		langDict["inNumRotorsText"]="# of Rotors";
+		langDict["inTWeightText"]="Total Weight";
+		
+		langDict["inTWeightOp0Text"]="Total Weight";
+		langDict["inTWeightOp1Text"]="Load Weight";
+		langDict["inTWeightOp2Text"]="Frame+Load Weight";	
+		
+		langDict["inFrLenText"]="Frame Size";
+		langDict["inShapAeroText"]="Aero Design";
+		langDict["inShapAeroOp0Text"]="excellent";
+		langDict["inShapAeroOp1Text"]="good";
+		langDict["inShapAeroOp2Text"]="medium";
+		langDict["inShapAeroOp3Text"]="poor";
+		langDict["inShapAeroOp4Text"]="very poor";
+
+		langDict["inMaxTiltOp0Text"]="No Limit";
+		langDict["inAltText"]="Altitude";
+
+		langDict["inTempText"]="Air Temperature";
+				
+		langDict["inFCUBrandText"]="FCU Brand";
+
+
+		//扩展词条
+		langDict["inTBatRanText"]="Min. Battery Capacity";	
+		langDict["inSafePowText"]="Max. Takeoff Throttle";	
+		langDict["inMaxTiltText"]="FCU Max. Tilt Limit";	
+		langDict["inAddCurText"]="FCU & Attaches Current";	
+
+		
+	  // Battery title name dic
+		langDict["inBattBrandText"]="Battery Brand" ; 
+		langDict["inBattType1Text"]="Cell Type";			
+		langDict["inBattTypeText"]="Model";	
+		langDict["inBattStructText"]="Cell Structure";	
+		langDict["inBattCapaText"]="Capacity";
+		langDict["inBattCurText"]="Max. Const. C";
+		langDict["inBattTWeightText"]="Weight";
+		langDict["inBattReText"]="Resistance";
+		langDict["inBattComSNumText"]="Cell Structure";
+		langDict["inBattSNumText"]="BatteryAssembly";
+
+		//Nav help
+		langDict["uiNewsTextHelp"]="news and updates of the website";
+		langDict["uiHelpTextHelp"]="Tell you how to use this website";
+		langDict["uiContactTextHelp"]="If you have any question, you can contact us";
+		langDict["uiLangTextHelp"]="Change the display language";
+		langDict["uiLang0TextHelp"]="Display in English";
+		langDict["uiLang1TextHelp"]="Display in Chinese";	
+		langDict["uiUnitTextHelp"]="Change the display units\nChoose British unit (ft,oz) or metric unit(m,kg)";
+		langDict["uiUnitMeTextHelp"]="m, kg, N ……";
+		langDict["uiUnitEnTextHelp"]="inch, oz, lbf ……";
+
+		langDict["inFrameShTitleHelp"]="Frame structure of the Multicopter";
+		langDict["inTWeightTextHelp"]="The total weight of the Multicopter, \nincluding the battery and the load weight";
+		langDict["inFrLenTextHelp"]="The distance of two rotors along the frame diameter";
+		langDict["inShapAeroTextHelp"]="The aerodynamic shape of the Multicopter:\nexcellent  ：designed according to the principle of pneumatics, the air resistance is very small \n  good    ：The surface is sealed smooth \nmedium  ：Normal shape like F450, no customized shell\n  poor     ：no customized shell, and there are attached pendants like camera and mount \nvery poor：Something exists that can induce very big air drag ";
+		langDict["inAltTextHelp"]="The altitude that the Multicopter is flying";
+		langDict["inTempTextHelp"]="The air temperature during the flight";
+
+
+		//ESC Names
+		langDict["inESCBrandText"]="ESC Brand";
+		langDict["inESCTypeText"]="Model";
+		langDict["inESCContIText"]="Constant Discharge Current";
+		langDict["inESCMaxIText"]="Max. Cont. Current";
+		langDict["inESCRText"]="Resistance";
+
+		langDict["inESCMaxVText"]="Max. Lipo Cells";
+		langDict["inChoNotText"]="(*Optional)";
+		langDict["inChoWeightText"]="Weight ";
+
+
+		// Motor title name
+		
+		langDict["inMotorBrandText"]="Motor Brand:";
+		langDict["inMotorTypeText"]="Model:";
+		langDict["inMotorKvText"]="KV (rmp/V torque)"	
+		langDict["inNoLoCurText"]="No-load Current-Voltage";
+		langDict["inMotorLimitCurText"]="Limit Power or Current (10s)";
+		langDict["inMotorRText"]="Internal Resistance";
+		langDict["inMotorLenText"]="Case Length";
+		langDict["inChoOutLenText"]="Outer Diameter ";
+		
+		//Propeller
+		langDict["inPropBrandText"]="Propeller Brand";
+		langDict["inPropTypeText"]="Model:";	
+		langDict["inPropDiaText"]="Diameter";
+		langDict["inPropPitchText"]="Pitch";
+		langDict["inPropbladeText"]="Blade Num";
+
+		langDict["inPropDiaUnitText"]="Inch";	
+		langDict["inPropPitchUnitText"]="Inch";
+
+		
+		//
+		langDict["Custom"]="Customized..";
+			
+		
+		//other
+		langDict["inMotorBrandSelText"]="Customized..."	
+		
+
+		langDict["inChosenSelText"]="Select an Option..";
+		langDict["inChosenCustomText"]="* Customized...";
+		langDict["inChosenCommonText"]="* Common...";
+		langDict["inChosenSelTextUAV"]="Select a multicopter from database ..";
+
+		//Results items
+		langDict["outCalcText"]="Calculate";
+		langDict["outBasInfoText"]="Basic Information";
+		langDict["NewsTitleText"]="News and Documents";
+		langDict["outHoverTimeText"]="Hovering Time";
+		langDict["outLoadWeightText"]="Remaining Load";
+		langDict["outFlyAltText"]="Max. Takeoff Altitude";
+		langDict["outFlyRangeText"]="Flying Range";
+		langDict["outForSpeedText"]="Forward Speed";
+		langDict["outMultiText"]="Multicopters";
+		langDict["outShareText"]="Share";
+		langDict["outDetInfoText"]="Detail Information";	
+		
+
+		langDict["outHoverPerfText"]="Hovering Performance";
+		langDict["outMaxThrPerfText"]="Max. Throttle Performance";
+		langDict["outIntPerfText"]="Integral Performance";
+
+		langDict["outHovTimeText"]="Hovering Time";
+		langDict["outHovThrPercText"]="Throttle Percentage";
+		langDict["outHovMotCurText"]="ESC Current";
+		langDict["outHovMotRPMText"]="Motor Speed";
+		langDict["outHovMotPwrText"]="Motor Power";
+		langDict["outHovBattVolText"]="Battery Voltage";
+		langDict["outHovBattCurText"]="Battery Current";
+		langDict["outHovEffText"]="Power Efficiency";
+		
+		
+		langDict["outMaxTimeText"]="Flight Time";
+		langDict["outMaxLiftText"]="Total Lift";
+		langDict["outMaxMotCurText"]="ESC Current";
+		langDict["outMaxMotRPMText"]="Motor Speed";
+		langDict["outMaxMotPwrText"]="Motor Power";
+		langDict["outMaxBattVolText"]="Battery Voltage";
+		langDict["outMaxBattCurText"]="Battery Current";
+		langDict["outMaxEffText"]="Power Efficiency";
+
+		langDict["outTotGenFlyText"]="Normal Operation";
+		langDict["outTotRemLoadText"]="Remaining Load";
+		langDict["outTotMaxAltText"]="Max. Takeoff Altitude";
+		langDict["outTotMaxTiltText"]="Max. Tilt Angle";
+		langDict["outTotMaxSpeedText"]="Max. Forward Speed";
+		//langDict["outTotMaxClimbAcText"]="Max. Climb Accel.";
+		langDict["outTotWeightText"]="Total Weight";
+		langDict["outTotMaxRangText"]="Max. Flight Range";
+		langDict["outTotWindResiText"]="Wind Resistance";
+
+		langDict["outWindDegText"]="Degree";	
+	
+		langDict["reTureTitleText"]="Error feedback: the autonomous learning and calibration algorithms are applied, which will make the results more and more precise.";
+		langDict["reTrueLoTimeText"]="Actual Hovering Time";
+		langDict["reTrueThrText"]="Throttle Percent";
+		langDict["reTrueWeightText"]="Total Weight";
+		langDict["reTrueSpeedText"]="Max. Forward Speed";
+		langDict["reTrueDistText"]="Flight Distance";
+		langDict["reTrueMsgText"]="Results Inaccuracy / Database Completion / Suggestions or Opinion / Expected New Function / Your Contact Details";
+		langDict["reTrueSendText"]="Send Feedback";
+
+		langDict["reTrueEmailText"]="E-Mail";
+		langDict["reTrueNoMsgErr"]="No effective feedback data, click OK to return.";
+		langDict["reTrueMsgSucc"]="Thanks for your feedback, the feedback data have been received.";
+
+
+		langDict["outMathModelText"]='Mathematical Model&nbsp;&nbsp;(<a  target="_blank" href="js/MathModelDocEn.pdf">Modeling method and source code</a>)';
+		langDict["outTotMassText"]="Multicopter Mass";
+		langDict["outGText"]="Acceleration of Gravity";
+		langDict["outInMatText"]="Multicopter Inertia Matrix";
+		langDict["outInMat1Text"]="J=diag(J<sub>xx</sub>, J<sub>yy</sub>, J<sub>zz</sub>)";		
+		langDict["outdMcText"]="Distance of Motor to Center";
+		langDict["outCtText"]="Propeller Integrated Thrust Coef. by Thrust (N) Dividing Speed² (rad/s), i.e. (C<sub>t</sub>=T<sub>p</sub>/&#969;²)";
+		langDict["outCmText"]="Propeller Integrated Moment Coef. by Moment (N.m) Dividing Speed² (rad/s), i.e.  (C<sub>m</sub>=M<sub>p</sub>/&#969;²)";
+		langDict["outCRText"]="Motor Curve: Throttle σ (0~1) to Motor Steady Speed &#969;<sub>ss</sub> (rad/s)";
+		langDict["outWbText"]="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( &#969;<sub>ss</sub>=C<sub>R</sub>*σ+&#969;<sub>b</sub> )";
+		langDict["outJmText"]="Motor-Propeller Inertia";
+		langDict["outTmText"]="Motor Response Time Constant";
+		langDict["outCdText"]="Air-Drag Coef. by Drag (N) dividing fly-speed² (m/s), i.e. (C<sub>d</sub>=D/V²)";
+		langDict["outCMdText"]="Air-Torque Coef. by Torque (N.m) dividing rotation-speed² (rad/s), i.e. (C<sub>dm</sub>=M/w²)";
+
+		//逆向建模
+		langDict["uiDesignText"]="DESIGN";
+		langDict["reCopterTypeText"]="Frame Type";
+		langDict["reCopterTypeOp0Text"]="TriCopter";
+		langDict["reCopterTypeOp1Text"]="QuadCopter";
+		langDict["reCopterTypeOp2Text"]="HexaCopter";
+		langDict["reCopterTypeOp3Text"]="OctoCopter";
+		langDict["reCopterTypeOp4Text"]="18PropsCopter";
+		langDict["reCopterTypeOp5Text"]="3Axes-6Props(Y6)";
+		langDict["reCopterTypeOp6Text"]="4Axes-8Props(X8)";
+		langDict["reCopterTypeOpOtherText"]="Others (Charge)";
+		langDict["OtherTypeAlertText"]="This is a paid function, you can contact us and describe your detail configuration, we will calculate the optimum configuration for you.";
+		
+		langDict["reTotWeiText"]="Total Weight";
+		langDict["reHovTimeText"]="Hovering Time";
+		langDict["reAltText"]="Flight Altitude";
+		langDict["reDesignText"]="Design Application";			
+		langDict["reDesignOp0Text"]="Hovering Flight";
+		langDict["reDesignOp1Text"]="Heavy Load"
+		langDict["reDesignOp2Text"]="Aerobatic Flight";
+		langDict["reDesignOp3Text"]="Aerial Photography";
+		langDict["reDesignOp4Text"]="Hight Speed Flight";
+		langDict["reDesignOp5Text"]="Plant Protection";
+		langDict["reDesignOp6Text"]="Package Delivery";
+		langDict["reDesignOp7Text"]="Patrol Inspection";
+		langDict["reDesignOp8Text"]="Spy Monitoring";
+		
+		langDict["reBatDensText"]="Battery Type";
+
+		langDict["selectDatabaTypeText"]="Select Database";
+		langDict["selectDatabaTypeDefaultText"]="All Database";
+
+
+		langDict["reCalcText"]="Reverse Solution";
+		langDict["reItemOutText"]="Recommended Configurations";
+		
+		langDict["reTabNumText"]="Num.";
+		langDict["reTabMotText"]="Motor";
+		langDict["reTabEscText"]="ESC";
+		langDict["reTabPropText"]="Propeller";
+		langDict["reTabBattText"]="Battery";
+		langDict["reTabFrSzText"]="Frame Size";
+		langDict["reTabHvTmText"]="Hovering Time";
+		langDict["reTabRmLdText"]="Load Weight";
+		langDict["reTotWeiText"]="Total Weight (include load)";
+		
+		//error
+		langDict["errValTooSmall"]="Error: the input is too small. Please try again. "	;	
+		langDict["warValTooSmall"]="Warning: the input seems too small. "	;	
+		langDict["tipAttUnit"]="Tip: the unit is ";
+		langDict["errNoNum"]="Error: the input is not a number!";
+		langDict["errPosiNum"]="Error: the input should be positive.";
+		langDict["errNumBigTh"]="Error: the input should be bigger than ";
+		langDict["errNumSmalTh"]="Error: the input should be smaller than ";
+		
+		
+		langDict["errMotParaMiss"]="Error: Please fill out the motor parameters.";
+		langDict["errPropParaMiss"]="Error: Please fill out the propeller parameters.";	
+		langDict["errESCParaMiss"]="Error: Please fill out the Electronic Speed Control (ESC) parameters.";
+		langDict["errBattParaMiss"]="Error: Please fill out the battery parameters.";		
+		langDict["errNumBtw"]="Error: The input number should be located between ";
+		langDict["errNumBtw0"]=" and ";	
+		langDict["errNumBtw1"]=".";
+			
+		langDict["contactInfoText"]=" \
+			    <h2>Contact Info</h2> \
+			    <div class='bg'></div>\
+			    \
+			    <p><strong>Tel:</strong> 86-10-82338464;<br>\
+			       <strong>Fax:</strong> 86-10-82338414;<br>\
+	       <strong>Email：</strong><br>\
+	      Associate Prof. Quan:&nbsp;&nbsp;<a href='Mailto:qq_buaa@163.com?subject=Contact from flyeval.com'>qq_buaa@163.com</a>; <br> \
+		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>\
+		  Associate Prof. Dai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<a href='Mailto:dai.xh@csu.edu.cn?subject=Contact from flyeval.com'>dai.xh@csu.edu.cn</a>;<br> \
+		  <a href='https://faculty.csu.edu.cn/daixunhua'>https://faculty.csu.edu.cn/daixunhua</a><br>\
+	    </p>  	\
+	    	<p>\
+	       Use WeChat to scan the following QR Code to follow our WeChat public account\
+	      </p>     \
+		";
+
+		langDict["contactTitleText"]="\
+	      <h2>News</h2>  \
+		  <p>1. The performance evaluation algorithm is published as journal article: D. Shi, X. Dai, X. Zhang, and Q. Quan, “A practical performance evaluation method for electric multicopters,” IEEE/ASME Transactions on Mechatronics, vol. 22, no. 3, pp. 1337–1348, 2017. <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.bib'>[BibTex]</a></p>  \
+		  <p>2. Part of the rapid design algorithm is published as journal article: X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “An Analytical Design Optimization Method for Electric Propulsion Systems of Multicopter UAVs with Desired Hovering Endurance,” IEEE/ASME Transactions on Mechatronics, vol. 24, no. 1, pp. 228–239, 2019. <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.bib'>[BibTex]</a><\p> \
+		  <p>3. Part of the efficiency optimization algorithm is published as journal article: X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “Efficiency Optimization and Component Selection for Propulsion Systems of Electric Multicopters. IEEE Transactions on Industrial Electronics, vol. 66, no. 10, pp. 7800–7809, 2019. <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.bib'>[BibTex]</a><\p> \
+		  <p>4. Part of the modeling and simulation method is published as journal article: X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “Simulation Credibility Assessment Methodology With FPGA-based Hardware-in-the-Loop Platform,”  IEEE Transactions on Industrial Electronics, vol. 68, no. 4, pp. 3282-3291, 2021. <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.bib'>[BibTex]</a><\p> \
+		  <p>5. Part of the Simulation and Test method is published as journal article: X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “RFlySim: Automatic test platform for UAV autopilot systems with FPGA-based hardware-in-the-loop simulations,”  Aerospace Science and Technology, vol. 114, p. 106727, 2021. <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.bib'>[BibTex]</a><\p> \
+		  ";
+
+		langDict["contactBookText"]="<p>For more  detailed knowledge about multiopter UAVs, please refer to our textbook <I> Introduction to Multicopter Design and Control </I>. It is available at Springer now, please visit\
+		<p><center><a href='http://www.springer.com/us/book/9789811033810'>http://www.springer.com/us/book/9789811033810</a></center></p>\
+		<br><img src='images/Quan2017IntroMulticopter_2.png' width='540px'/></p>\
+		";
+					
+		langDict["contactMsgNaEmErr"]="Please fulfill the Name, Email, Company and Message items."
+		langDict["contactMsgSend"]="Thank you. Your request has been sent successfully. Please check your Email in a few minutes."
+		langDict["contactMsgFail"]="Sorry. The web server failed to send Email to your address. Please choose a new Email address or contact us."
+		langDict["contactEmailFormErr"]	="Wrong Email format, please check that you input the right Email address."
+		
+		langDict["contactNameText"]="your name";
+		langDict["contactEmailText"]="Your Email";	
+		langDict["contactCompText"]="Company Name";
+		langDict["contactSubjText"]="Subject";		
+		langDict["contactMsgText"]="message";
+		langDict["contSendMsgText"]="Get download links";		
+
+
+		langDict["CourseNavText"]=heredoc(function(){/*
+    	<li><a href="#Intro" style="font-size:16px;">Introduction</a></li>
+    	<li><a href="#Used" style="font-size:16px;">1. &nbsp;&nbsp;Platform</a></li>
+    	<li><a href="#Learned" style="font-size:16px;">2. &nbsp;&nbsp;Courses</a></li>
+    	<li><a href="#Perform" style="font-size:16px;">3. Framework</a></li>
+    	<li><a href="#Advanced" style="font-size:16px;">4. &nbsp;Advanced</a></li>
+      	<li><a href="#Download" style="font-size:16px;">5. &nbsp;Download</a></li>
+      	<li><a href="#Cases" style="font-size:16px;">6. &nbsp;&nbsp;Demos</a></li>
+      	<li><a href="#FAQ" style="font-size:16px;">7. &nbsp;&nbsp;FAQs</a></li>
+		 */});
+
+		 langDict["CourseIntroText"]="Multicopter Design and Control Experiments based on MATLAB and PixHawk";
+		 langDict["CourseIntro1Text"]=heredoc(function(){/*
+			  Multicopter design and control experiments are all for the book "Quan Quan, Xunhua Dai, Shuai Wang. Multicopter Design and Control Practice. Springer, 2020." (URL: <a  target="_blank" href="https://www.springer.com/gp/book/9789811531378">https://www.springer.com/gp/book/9789811531378</a>). 
+              <br>This book is a sister book to "Quan Quan, Introduction to Multicopter Design and Control. Springer, 2017." (URL: <a  target="_blank" href="https://www.springer.com/gp/book/9789811033810">https://www.springer.com/gp/book/9789811033810</a>).
+		*/});
+		langDict["CourseIntro2Text"]=heredoc(function(){/*
+              <a  target="_blank" href="https://www.springer.com/gp/book/9789811531378" title="Multicopter Design and Control Practice. Springer, 2020"><img src="images/course/BookPageNew.jpg" alt="screen 1" width="auto" height="410px"></a>
+              <a  target="_blank" href="https://www.springer.com/gp/book/9789811033810" title="Introduction to Multicopter Design and Control. Springer, 2017"> <img src="images/course/BookPageOld.jpg" alt="screen 1" width="auto" height="410px"></a>			
+		*/});
+		langDict["CourseIntro3Text"]="By following the instruction of our book with experimental hardware and software tools acquired from this website, the following basic functions can be realized.";
+		langDict["CourseIntro4Text"]=heredoc(function(){/*
+			<a  class="imBx" href="images/course/PlatGif1.gif"><img src="images/course/PlatGif1.gif" title="Software-in-the-loop simulation in Simulink" width="350px" height="auto" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/PlatGif2.gif"><img src="images/course/PlatGif2.gif" title="Automatic code generation for PX4 firmware" width="350px" height="auto" style="margin:0px 10px;"></a>
+			<a  class="imBx" href="images/course/PlatGif3.gif"><img src="images/course/PlatGif3.gif" title="Hardware-in-the-loop simulation in Windows" width="350px" height="auto" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/PlatGif4.gif"><img src="images/course/PlatGif4.gif" title="Flight test platform with shield protection for safety" width="350px" height="auto" style="margin:2px 10px;"></a>
+		*/});			
+		langDict["CourseIntro5Text"]="A video has been released to present a brief introduction to the experimental platform. ";
+
+		langDict["CourseUsedText"]=heredoc(function(){/*
+	        <h2>1. Experimental Platform</h2>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+           <p>Model-Based Design (MBD) experiment adopts:</p>  
+           <a  class="imBx" href="images/course/CompositionEn.jpg"><img src="images/course/CompositionEn.jpg" title="Main components of the experimental platform" width="600" height="auto" style="margin:0 120px;"></a>
+           
+           <div style="margin:5px 5px 5px 5px;width:830px;float:left">
+	         	<p>(1) the most widely used flight platform, multicopters, as a flight platform; 
+             <br>(2) the most widely used flight pilot hardware, Pixhawk, as a control platform; 
+			 <br>(3) One of the most widely used programming languages in the field of control engineering, MATLAB/Simulink, as a programming language. </p>
+			 <p> The figure below presents several Pixhawk autopilot products suitable for different flight test situations with different performance requirements.</p>
+             <a  class="imBx" href="images/course/PixhawksEn.jpg"><img src="images/course/PixhawksEn.jpg" title="The supported Pixhawk hardware products" width="550" height="auto" style="margin:0 120px"></a>
+			</div>
+		*/});
+
+
+		langDict["CourseLearnedText"]=heredoc(function(){/*
+			<h2>2. Course Content</h2>  
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			  <p>This course includes twelve lessons: the first four lessons introduce the software and hardware platform of the experiments; the last eight lessons present  eight experiments. The course experiments can be classified into four parts: design and modeling, estimation, control, and decision-making experiments.</p>
+			<a  class="imBx" href="images/course/CoursesEn.jpg"><img src="images/course/CoursesEn.jpg" alt="screen 1" width="600" height="auto" style="margin:0 100px"></a>
+			<div style="margin:5px 5px 5px 5px;width:830px;float:left">
+			  <p><br>After obtaining the installation package from the <a href="#Download" style="text-decoration: underline">Download Page</a> , the following four lessons will tell you how to install and apply the toolbox:
+			  <br><strong>Lesson01:</strong>	Course Introduction. <a  target="_blank" class="pdf" href="doc/Lesson_01_Introduction.pdf">[pdf]</a>
+			  <br><strong>Lesson02:</strong>	Experimental Platform Configuration. <a  target="_blank" class="pdf" href="doc/Lesson_02_Experimental_Platform_Configuration.pdf">[pdf]</a>
+			  <br><strong>Lesson03:</strong>	Experimental Platform Usage. <a  target="_blank" class="pdf" href="doc/Lesson_03_Experimental_Platform_Usage.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e0.zip">[Code]</a>
+			  <br><strong>Lesson04:</strong>	Experimental Process. <a  target="_blank" class="pdf" href="doc/Lesson_04_Experimental_Process.pdf">[pdf]</a>
+			  
+			</p>
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			  
+			  <p>The following eight lessons correspond to the eight experiments of the course. We provide detailed code examples to ensure that each experiment or each part of an experiment can be finished independently. 
+			  <br><strong>Lesson05:</strong>	Exp.1 Propulsion System Design. <a  target="_blank" class="pdf" href="doc/Lesson_05_Propulsion_System_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e1.zip">[Code]</a>
+			  <br><strong>Lesson06:</strong>	Exp.2 Dynamic Modeling. <a  target="_blank" class="pdf" href="doc/Lesson_06_Dynamic_Modeling_Expeirment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e2.zip">[Code]</a>
+			  <br><strong>Lesson07:</strong>	Exp.3 Sensor Calibration. <a  target="_blank" class="pdf" href="doc/Lesson_07_Sensor_Calibration_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e3.zip">[Code]</a>
+			  <br><strong>Lesson08:</strong>	Exp.4 State Estimation and Filter Design. <a  target="_blank" class="pdf" href="doc/Lesson_08_State_Estimation_and_Filter_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e4.zip">[Code]</a>
+			  <br><strong>Lesson09:</strong>	Exp.5 Attitude Controller Design. <a  target="_blank" class="pdf" href="doc/Lesson_09_Attitude_Controller_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e5.zip">[Code]</a>
+			  <br><strong>Lesson10:</strong>	Exp.6 Set-Point Controller Design. <a  target="_blank" class="pdf" href="doc/Lesson_10_Set-point_Controller_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e6.zip">[Code]</a>
+			  <br><strong>Lesson11:</strong>	Exp.7 Semi-autonomous Control Mode Design. <a  target="_blank" class="pdf" href="doc/Lesson_11_Semi-autonomous_Control_Mode_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e7.zip">[Code]</a>
+			  <br><strong>Lesson12:</strong>	Exp.8 Failsafe Logic Design. <a  target="_blank" class="pdf" href="doc/Lesson_12_Failsafe_Logic_Design_Experiment.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e8.zip">[Code]</a>
+			  </p>
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			<p> In the appendix, we introduce the advanced functions of RflySim platform. You can read the PPT to learn more.
+				<br><strong>Lesson13:</strong>	Appendix.A RflySim Platform Advanced Features. <a  target="_blank" class="pdf" href="doc/Lesson_13_RflySim_Platform_Advanced_Features.pdf">[pdf]</a>
+			</p>
+			  <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			  <p>The latest source code and pdfs also available at our Github Page: <a  target="_blank" href="https://github.com/RflySim/RflyExpCode" >https://github.com/RflySim/RflyExpCode</a></p>
+			</div>
+		  */});
+
+		  langDict["CoursePerformText"]=heredoc(function(){/*
+	        <h2>3. Experimental Framework</h2>  
+          <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+           <p>Each task consists of three step-by-step experiments from shallow to deep, namely basic, analysis, and design experiments so that students with different backgrounds can benefit from them. Each experiment must be implemented in MATLAB and Simulink, and the simulation test is carried out in a built simulation platform. Further, the students can upload the controller to the Pixhawk autopilot through the automatic code-generation technology and form a closed loop with a given real-time simulator for a hardware-in-the-loop (HIL) simulation test. Throughout the process, the students can familiarize themselves with the basic process of model-based design, including the composition, mathematical model, and control of a multicopter. Furthermore, students can master a variety of modern tools such as MATLAB+Simulink and FlightGear in the development part as well as computer simulation, a HIL simulator, Pixhawk autopilot, and a remote control transmitter in the HIL simulation test. The design task also includes outdoor flight experiments to allow the students to experience the full development of a multicopter. </p>
+           <a  class="imBx" href="images/course/StructureEn.jpg"><img src="images/course/StructureEn.jpg" alt="screen 1" width="600" height="auto" style="margin:0 100px"></a>
+           <div style="margin:5px 5px 5px 5px;width:830px;float:left"><p>Most of the software tools are open-source, playing important roles in all the phases of multicopter development.</p></div>
+          <a  class="imBx" href="images/course/HardwareEn.jpg"><img src="images/course/HardwareEn.jpg" alt="screen 1" width="600" height="auto" style="margin:10px 100px"></a>
+		  */});
+
+		  langDict["CourseDownloadText"]=heredoc(function(){/*
+			<h2>5. Software Download</h2>  
+			<p>Please fill in the contact information, and we will send the latest download links of [RflySim Basic] and [RflySim Advanced] version RflySimAdvFree-v2.46-20220220.iso to your Email address. If you have not received the download link Email, please check your Junk-box in your Email, if still not, please choose a new Email address or send email to <a class="mail"  href="Mailto:service@rflysim.com?subject=Contact from flyeval.com for download link">service@rflysim.com</a> to acquire download links.</p>
+			*/});
+
+		  langDict["CourseAdvancedText"]=heredoc(function(){/*
+	        <h2>4. Advanced Functions</h2>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+	         <p> 
+			<strong>【RflySim Basic Version】:</strong> is released with the experimental book, which contains the basic functions of our platform. In addition, Our【RflySim Advanced Version】 platform provides many advanced functions（no free so far）. You can contact us (Email: <a class="mail"  href="Mailto:service@rflysim.com?subject=Contact from flyeval.com for advanced functions">service@rflysim.com</a>) for advanced functions and hardware.
+			<br><strong>(1)	Ease of Use</strong>. One-key installation and simulation in the Windows platform, which is convenient and easy to use for motorTypes to focus on algorithm development and test.
+		   </p> 
+			<div style="margin:10px 10px;"><a  class="imBx" href="images/course/AutoInstall.gif"><img src="images/course/AutoInstall.gif" title="One-key installation" width="auto" height="215px" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/PX4SITLSim.gif"><img src="images/course/PX4SITLSim.gif" title="One-key swarm software-in-the-loop simulation with PX4 autopilot" width="auto" height="215px" style="margin:0px 10px;"></a>
+          	</div>
+			 <p>
+			 <br> <strong>&emsp;Left: One-key installation; &emsp;Right: One-key software-in-the-loop swarm simulation with PX4/Simulink/QGC</strong>
+			<br><strong>(2)	UAV Swarm Simulation</strong>. We provide interfaces to perform HIL simulations for multiple Pixhawk with computers in the same local area network. Mavlink communications through serial (Radio telemetry) or network (WIFI) to control Pixhawk by Simulink or C++ programs are also supported.
+			<br><strong>(3) Multiple Vehicle Types</strong>.	Compatible to different vehicle models, such as cars, fixed-wing, or VTOL aircraft. Users can build the vehicle models in Simulink with given interfaces and auto-generate DLL model file for HIL simulation platform; then, the experimental platform can be applied to any other unmanned vehicle systems.
+			</p> 
+			<div style="margin:10px 20px;"><a  class="imBx" href="images/course/UE4FixedWing.jpg"><img src="images/course/UE4FixedWing.jpg" title="HIL simulation for fixed-wing aircraft" width="auto" height="215px" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/UE4AAR.jpg"><img src="images/course/UE4AAR.jpg" title="UE4 scenes for aerial docking of aircraft" width="auto" height="215px" style="margin:0px 5px;"></a>
+          	</div>			
+			 <p>
+			 <strong> &emsp;Left: HIL simulation for fixed-wing aircraft; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;Right: UE4 scenes for aerial docking of aircraft</strong>
+			<br><strong>(4) high-fidelity 3D Simulation</strong>. We provide source code and instruction to develop 3D environments in Unreal Engine 4 (UE4), so motorTypes can quickly develop an indoor or outdoor 3D environment for simulation or vision-based algorithm development.
+			</p>
+           <div style="margin:10px 5px;"><a  class="imBx" href="images/course/AdvancedGIF2.gif"><img src="images/course/AdvancedGIF2.gif" title="Outdoor HIL simulation scene for unmanned cars"  width="auto" height="215px" style="margin:0px 10px;"></a>
+            <a  class="imBx" href="images/course/AdvancedGIF3.gif"><img src="images/course/AdvancedGIF3.gif" title="Swarm control and HIL simulation" width="auto" height="215px" style="margin:0px 5px;"></a>
+          </div>			
+			<p>
+			<strong> &emsp;Left: Outdoor HIL simulation scene for unmanned cars; &emsp; &emsp;Right: Swarm control and HIL simulation</strong>
+			<br><strong>(5)	Vision-based control</strong>. Our 3D environments based on UE4 can send real-time images through shared memory, and other programs (Python/C or C++/Simulink) can process the images and feedback the control signals to HIL simulation platform to achieve vision-based control.
+	         </p>  
+           <div style="margin:10px 10px;"><a  class="imBx" href="images/course/AdvancedGIF1.gif"><img src="images/course/AdvancedGIF1.gif" title="Indoor HIL simulation scene based on UE4" width="auto" height="215px" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/AdvancedGIF4.gif"><img src="images/course/AdvancedGIF4.gif" title="Vision-based control for multicopter to cross rings" width="auto" height="215px" style="margin:0px 5px;"></a>
+		  </div>
+		  <p>
+			<strong> &emsp;Left: Indoor HIL simulation with UE4; &emsp; &emsp; &emsp; &emsp;Right: One-key vision control for multicopter crossing rings</strong>
+		   </p>
+			<div style="margin:10px 5px;"><a  class="imBx" href="images/course/AdvancedGIF9.gif"><img src="images/course/AdvancedGIF9.gif" title="Motor failed simulation with HIL simulation" width="auto" height="215px" style="margin:0px 5px;"></a><a  class="imBx" href="images/course/AdvancedGIF10.gif"><img src="images/course/AdvancedGIF10.gif" title="Simulink control UAV swarm indoor" width="auto" height="215px" style="margin:0px 5px;"></a>
+		  </div>
+		  <p>
+			<strong> &emsp;Left: Motor failed simulation with HIL simulation; &emsp;&emsp;&emsp;&emsp;Right: Simulink control UAV swarm indoor</strong>
+		   </p>		  
+
+
+		  */});
+
+
+		  langDict["CourseMoreAdvancedText"]=heredoc(function(){/*
+			<h3>【RflySim Enterprise Version】：Automatic safety testing framework for unmanned vehicle systems based on real-time hardware-in-the-loop simulation with FPGA</h3>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			<p>
+			This platform uses high-performance real-time simulation computer to simulate the vehicle motion, and use FPGA to simulate and replace all sensor chips on the autopilot (control) system. 
+			<br><strong>Platform Advantages</strong>
+			<br><strong>(1) Extensibility: </strong> Models are developed in Simulink with module form, so by changing the parameters of specific subsystem modules, it is easy to extend to other types of vehicles, such as UAVs (multicopters, fixed-wings, VTOLs), unmanned cars or boats.
+			</p>
+           <div style="margin:10px 10px;"><a  class="imBx" href="images/course/FPGAHIL1En.jpg"><img src="images/course/FPGAHIL1En.jpg" title="Unified testing framework for different types of vehicles" width="auto" height="270px" style="margin:0px 10px;"></a><a  class="imBx" href="images/course/FPGAHIL2En.jpg"><img src="images/course/FPGAHIL2En.jpg" title="FPGA-based hardware-in-the-loop simulation platform" width="auto" height="270px" style="margin:0px 10px;"></a>
+		  </div>
+		  <p>		
+		    <strong> &emsp;&emsp;Left: Unified test framework for different vehicle types; &emsp;Right: FPGA-based HIL simulation platform</strong>			
+			<br><strong>(2) Practicability: </strong> plug and test for different autopilot products; only need to know the sensor models used by the autopilot with no requirement to access or modify the source code of control systems, then the platform can perform black-box tests for different autopilot products.
+			<br><strong>(3) Standardization: </strong> The platform uses modular/visual programming approach, so the system model standardization can be ensured by using certified standard modules or subsystems. Besides, the whole simulation software is obtained by automatic code generation technique, which ensures the standardization of the development process and minimizes the effect of manual differences and bugs.
+		  </p>
+           <div style="margin:10px 10px;"><a  class="imBx" href="images/course/AutoCodeFPGAEn.jpg"><img src="images/course/AutoCodeFPGAEn.jpg" title="Automatic code Generation framework for simulation software" width="auto" height="195px" style="margin:0px 10px;"></a><a  class="imBx" href="images/course/AutoTestFPGAEn.jpg"><img src="images/course/AutoTestFPGAEn.jpg" title="Automatic safety testing and assessment framework" width="auto" height="195px" style="margin:0px 10px;"></a>
+		  </div>		  			
+		  <p>
+		  <strong> &emsp; Left: Auto code Generation for simulation software; &emsp;&emsp;Right: Auto safety testing and assessment framework</strong>						
+			<br><strong>(4) Automation: </strong> With simulation model comprehensive and accurate enough, this platform can simulate normal and failure cases of outdoor flight tests. What's more automatic testing, case traversing, and assessment can be performed to ensure system safety and reliability. 
+		  </p>
+           <div style="margin:10px 35px;"><a  class="imBx" href="images/course/FPGAHIL3En.jpg"><img src="images/course/FPGAHIL3En.jpg" title="Unified modeling and simulation framework for different vehicle systems" width="750px" height="auto" style="margin:5px 10px;"></a>
+          </div>		  		  
+			<p>A video has been released to introduce the detailed information of our platform: </p>
+		  */});
+
+
+		  langDict["CourseCasesText"]=heredoc(function(){/*
+			<h2>6. Application Demos</h2>  
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			<p>Attitude control based on active disturbance rejection control(ADRC) algorithm. The controller consists of a tracking differentiator(TD), nonlinear state error feedback(NLSEF), and an expanded state observer(ESO). Its structure is as follows:</p>
+			<a  class="imBx" href="images/course/ADRC.jpg"><img src="images/course/ADRC.jpg" alt="screen 1" width="600" height="auto" style="margin:0 80px"></a>
+			<div style="margin:5px 5px 5px 5px;width:830px;float:left">
+			<p>Here, ADRC is used for attitude control. From the dynamic system modeling in Chapter 6, we can see that the attitude dynamic model is a second-order system, so a second-order ADRC method can be used. The overall process is shown in the video.</p>
+		   </div>
+			 */});
+
+
+			langDict["CourseFAQText"]=heredoc(function(){/*
+			<h2>7. Frequently Asked Question (FAQ)</h2>  
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			<p>You can publish your questions on our Github Page: <a  target="_blank" href="https://github.com/RflySim/RflyExpCode/issues" >https://github.com/RflySim/RflyExpCode/issues </a></p>
+			<p>In the following, we will present the frequently asked questions from our readers. Hoping you can find the answers.</p>
+			*/});	
+
+		ErrCode=new Array();
+		
+		ErrCode["0"]="Error: <br>";		
+		ErrCode["1"]="* the motor current is excessive，please verify the limits (current, power, rpm) of the motor defined by the manufacturer.";
+		ErrCode["2"]="* the current exceeds the max current of the esc，please choose a bigger esc.";
+		ErrCode["3"]="* the battery current over the limit of the maximum discharge rate,please change another battery.";
+		ErrCode["4"]="* The all-up weight is too excessive to take off.";
+		ErrCode["5"]="* The vehicle body frame doesn't match with the chosen propeller, please change the body frame or the propeller.";
+		ErrCode["6"]="* The flight height over the limit, please verify your factual flight height.";
+		ErrCode["7"]="* the database is not connected."
+		ErrCode["8"]="* error exists in the transmitted data."
+		ErrCode["9"]="* battery voltage exceeds the ESC voltage limit, please check the esc or battery information.";		
+		ErrCode["10"]="* there is no matching results, please check your inputs and try again.";
+		ErrCode["11"]="* total mass of motor, battery, esc and propeller is bigger than the mass of multicopter, please check the mass input.";
+		ErrCode["12"]="* No result is found in the database. Please change the inputs and try again.";
+		ErrCode["30"]="Warning: <br>";
+		ErrCode["31"]="* The throttle should be less than 80% to ensure better maneuverability.";
+		ErrCode["32"]="* The assembled vehicle has low efficiency.";
+		ErrCode["33"]="* the input hovering time is unreasonable, the results is bad.";
+		
+		UAVTypeName=new Array();
+		UAVTypeName["0"]="Tricopter";
+		UAVTypeName["1"]="CoaxHexacopter";
+		UAVTypeName["2"]="Quadcopter";
+		UAVTypeName["3"]="Hexacopter";
+		UAVTypeName["4"]="CoaxOctacopter";
+		UAVTypeName["5"]="Octacopter";
+		
+		BatteryLang=[""];
+		ESCLang=[""];
+		MotorLang=[""];
+		PropellerLang=[""];
+		ShareDef=langDict["descrip"];
+		ShareMsg=["My Multicopter can hover about "," minutes, Longer than about ","% Multicopters. The evaluation results is very accurate, come and test the performances of your own Multicopters!"];
+				
+
+
+
+
+
+	}else if(lan=="zh"){
+		langDict=new Array();
+		langDict["preLang"]="zh";
+
+		langDict["title"]="flyeval-多旋翼性能估算-预估多旋翼的悬停时间载重能力飞行速度|多旋翼飞行器设计与控制|多旋翼评测|性能评测|四旋翼评估评测|无人机性能评估|性能估算|多轴性能|四轴选型";
+		langDict["descrip"]="多旋翼无人机的性能评估,飞行评测,估算各项性能.用户可简单地输入电机,电池,电调,螺旋桨,构型,海拔,温度,气动外形等信息,估算多旋翼的悬停时间,载重能力,飞行速度,飞行距离,数学模型等结果.";
+		langDict["keywo"]="flyeval,无人机,多旋翼,四旋翼,多轴,四轴,性能,评测,评估,估算,电机,电调,电池,航模,模型,飞机,转速,飞行速度,阻力,转动惯量,基于模型开发";
+		langDict["uiLabNameText"]="飞 行 评 测 <br> <span style='font-size:24px;'>&nbsp;Flight Evaluation<\/span>";	
+		$(".LabName").css("margin-top","19px");
+		
+		//导航栏名称和帮助
+		langDict["uiHomeText"]="首页";	
+		
+		langDict["uiNewsText"]="新闻";
+		
+		langDict["uiHelpText"]="帮助";
+
+		langDict["uiCourseText"]="<span style='color:#f00;'>课程 (New)<span>";
+
+		langDict["uiForumText"]="<span style='color:#f00;'>论坛 (内测)<span>";
+
+		langDict["uiAboutText"]="关于我们";
+		
+		langDict["uiContactText"]="联系";
+		
+		langDict["uiLangText"]="语言&nbsp; ▼";
+		
+		langDict["uiLang0Text"]="English";
+		
+		langDict["uiLang1Text"]="&nbsp;&nbsp;中文";	
+		
+		
+		langDict["News1Text"]="新闻 [1]：本网站的性能评估算法已发表为期刊论文：《D. Shi, X. Dai, X. Zhang, and Q. Quan, “A practical performance evaluation method for electric multicopters,” IEEE/ASME Transactions on Mechatronics, vol. 22, no. 3, pp. 1337–1348, 2017.》下载地址：<a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.bib'>[BibTex]</a>, <a  target='_blank'  href='http://flyeval.com/paper/'>[论文算法]</a>";	
+		langDict["News2Text"]="新闻 [2]：对多旋翼更详细的介绍与算法介绍，可以参考我们的中文教材《多旋翼飞行器设计与控制》，该书目前在 <a  target='_blank' href='https://www.amazon.cn/dp/B07B61G8S9'>[亚马逊]</a> <a  target='_blank' href='https://detail.tmall.com/item.htm?id=565935245302'>[淘宝]</a> <a  target='_blank' href='http://product.dangdang.com/1178459377.html'>[当当]</a> <a  target='_blank' href='https://item.jd.com/12322312.html'>[京东]</a> 等网站有售。";	
+		langDict["News3Text"]="新闻 [3]：部分多旋翼快速设计算法已发表为期刊论文：《X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “An Analytical Design Optimization Method for Electric Propulsion Systems of Multicopter UAVs with Desired Hovering Endurance,” IEEE/ASME Transactions on Mechatronics, vol. 24, no. 1, pp. 228–239, 2019.》，下载地址：<a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.bib'>[BibTex]</a>";	
+		langDict["News4Text"]="新闻 [4]：部分多旋翼效率优化算法已发表为期刊论文：《X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “Efficiency Optimization and Component Selection for Propulsion Systems of Electric Multicopters. IEEE Transactions on Industrial Electronics, vol. 66, no. 10, pp. 7800–7809, 2019.》，下载地址： <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.bib'>[BibTex]</a>";
+		langDict["News5Text"]="新闻 [5]：部分无人机建模与可信度评估方法已发表为期刊论文：《X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “Simulation Credibility Assessment Methodology With FPGA-based Hardware-in-the-Loop Platform,” IEEE Transactions on Industrial Electronics, vol. 68, no. 4, pp. 3282-3291, 2021.》，下载地址： <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.bib'>[BibTex]</a>";	
+		langDict["News6Text"]="新闻 [6]：部分无人机仿真与测试方法已发表为期刊论文：《X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “RFlySim: Automatic test platform for UAV autopilot systems with FPGA-based hardware-in-the-loop simulations,”  Aerospace Science and Technology, vol. 114, p. 106727, 2021.》，下载地址： <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.bib'>[BibTex]</a>";	
+				
+		
+		//第一栏基本参数栏标题帮助
+		langDict["inFrameShTitle"]="机架造型";	
+		langDict["inFrameShTitleHelp"]="多旋翼机架结构";			
+		
+		langDict["inTWeightText"]="整机重量";
+		langDict["inTWeightTextHelp"]="飞机的整体质量, \n包括电池负重等";	
+		
+		langDict["inTWeightOp0Text"]="整机重量 (机架+动力系统+负载)";
+		langDict["inTWeightOp0TextHelp"]="注意：整机重量的总重量,包括动力系统质量(电池电调电机螺旋桨质量, 负载质量, 机架重量和附加质量";
+		langDict["inTWeightOp1Text"]="负载重量 (不含动力系统和机架)";
+		langDict["inTWeightOp1TextHelp"]="注意：这里只有负载质量，机架和动力系统质量由网站算法根据型号尺寸估算";		
+		langDict["inTWeightOp2Text"]="机架+负载重量 (不含动力系统)";
+		langDict["inTWeightOp2TextHelp"]="注意：这里只有机架和负载总重量，动力系统质量由网站算法根据型号尺寸估算";
+		
+		langDict["inFrLenText"]="机架轴距";
+		langDict["inFrLenTextHelp"]="电机最大外接圆直径\n对于四旋翼即为两对侧电机距离";	
+		
+		langDict["inShapAeroText"]="外形气动";	
+		langDict["inShapAeroTextHelp"]="飞机的气动设计情况:\n非常好：外壳设计遵循气动原理, 阻力很小\n  好    ：有外壳, 封装较好, 无大外置部件(如云台)\n一般   ：无外壳, 电池紧凑外置,一般机架\n  差    ：无外壳, 外置电池云台等负载\n非常差：无外壳, 违背气动设计, 空气阻力很大";
+		langDict["inShapAeroOp0Text"]="非常好";
+		langDict["inShapAeroOp1Text"]="好";
+		langDict["inShapAeroOp2Text"]="一般";
+		langDict["inShapAeroOp3Text"]="差";
+		langDict["inShapAeroOp4Text"]="很差";
+
+		langDict["inAltText"]="飞行海拔";
+		langDict["inAltTextHelp"]="飞机预定飞行的海拔高度";	
+		
+		langDict["inTempText"]="空气温度";
+		langDict["inTempTextHelp"]="飞行时空气温度";
+
+
+		//扩展词条
+		langDict["inTBatRanText"]="电池放电下限";	
+		langDict["inSafePowText"]="安全起飞油门上限";	
+		langDict["inMaxTiltText"]="飞控最大倾角";	
+		langDict["inAddCurText"]="飞控&附件电流";	
+		langDict["inMaxTiltOp0Text"]="无限制";
+
+
+
+		//电池词条
+		langDict["inBattBrandText"]="电池品牌" ;
+		langDict["inBattBrandTextHelp"]="选择电池的品牌, 或者选择自定义输入详细参数\n选择\"自定义..\"会弹出详细的参数输入栏, 可以详细设置电池参数\n选择\"常用...\"弹出一些常用的电池配置条目" ; 	
+		 
+		langDict["inBattType1Text"]="电芯类型";	
+		langDict["inBattType1TextHelp"]="Li-Po：锂电池\nNi-MH：镍氢电池\nLi-Fe：锂铁电池\n……";	
+
+		langDict["inTBatRanVoSelText"]="单节电芯电压范围";	
+		langDict["inTBatRanVoSelTextHelp"]="单节电芯的电压范围，此处目前只对Li-Po电池有效";	
+		
+		langDict["inBattTypeText"]="型号";
+		langDict["inBattTypeTextHelp"]="如Li-Po 2S-7.4V-40C-1800mAh, 其中：\nLiPo：电芯类型为锂电池\n2S：有2个3.7V电芯单元串联而成\n7.4V：电池额定电压为7.4V\n40C：放电倍率, 最大允许放电电流为40倍电池容量, 即40*1800mA=72A\n1800mAh：电池容量,以1800mA电流放电可持续1h";	
+					
+		langDict["inBattStructText"]="电芯串联结构";
+		langDict["inBattStructTextHelp"]="如3S表示整个电池由3节电芯(比如：Li-Po电芯为3.7V)组成\n此时电压为3.7V*3=11.1V";
+			
+		langDict["inBattCapaText"]="容量";
+		langDict["inBattCapaTextHelp"]="电池容量, 单位是毫安时(mAh) \n例如5000mAh表明电池以5000mA的电流放电,可以工作一个小时";
+				
+		langDict["inBattCurText"]="持续放电倍率";	
+		langDict["inBattCurTextHelp"]="最大持续放电倍率：\n最大允许的持续放电电流(mA)除以电池容量大小\n如果电池容量为5000mAh, 放电倍率为20C, 表明电池\n最大允许持续通过的电流大小为5000*20mA=100A";
+		
+		langDict["inBattReText"]="内阻";
+		langDict["inBattReTextHelp"]="电池内阻, 单位为mΩ";
+		
+		langDict["inBattComSNumText"]="电芯串并联结构";
+		langDict["inBattComSNumTextHelp"]="电池电芯串并联结构, 如3S2P表示整个电池由3节电芯(Li-Po电芯为3.7V)组成\n先3块电压为3.7V的锂电池电芯串联为11.1V电池\n再拿2块11.1V电池并联, 得到3S2P结构";
+
+		langDict["inBattSNumText"]="电池串联-并联组合";
+		langDict["inBattSNumTextHelp"]="注意：这里是电池的组合不是电芯，默认情况飞机上只有一块锂电池，所以请选择1S1P。如果有多块电池，将成品电池再次串联或者并联组成更高电压或容量的电池\n电池串联会使电压翻倍而容量不变，电池并联容量翻倍电压不变。";
+
+		// 电机词条
+		langDict["inMotorBrandText"]="电机品牌:";
+		langDict["inMotorBrandTextHelp"]="选择电机的品牌, 或者选择自定义输入详细参数\n选择\"自定义..\"会弹出详细的参数输入栏, 可以详细设置电机参数" ;  		
+		
+		langDict["inMotorTypeText"]="型号:";
+		langDict["inMotorTypeTextHelp"]="电机型号, 形如C2822-KV1200, \"C\"表示电机的系列, \n\"28\"表示电机定子直径(mm), \"22\"表示转子直径(mm)\n\"KV1200\"表示电机KV值(转/伏特)";	
+		
+		langDict["inMotorKvText"]="KV值 (转每分/电压)";
+		langDict["inMotorKvTextHelp"]="定义为转速/伏特, 意思为输入电压增加1伏特, 无刷电机空转转速增加的转速值";
+				
+		langDict["inNoLoCurText"]="空载电流 - 电压";
+		langDict["inNoLoCurTextHelp"]="给一定电压(一般10V), 不加桨叶时(空载)电机的电流";	
+		
+		langDict["inMotorLimitCurText"]="最大持续电流(10s)";
+		langDict["inMotorLimitCurTextHelp"]="电机允许的最大持续电流, 以该电流持续运行超过一定时间, 电机可能烧毁";	
+		
+		langDict["inMotorRText"]="内阻";
+		langDict["inMotorRTextHelp"]="电机的内阻, 会产生热损耗";	
+
+		langDict["inChoOutLenText"]="外直径 &nbsp;";
+		langDict["inChoOutLenTextHelp"]="电机外圈最大直径，单位mm";	
+		
+
+		//电调词条
+		langDict["inESCBrandText"]="电调品牌";
+		langDict["inESCBrandTextHelp"]="选择电调的品牌, 或者选择自定义输入详细参数\n选择\"自定义..\"会弹出详细的参数输入栏, 可以详细设置电调参数\n选择\"常用...\"弹出一些常用的电调配置条目";	
+		
+		langDict["inESCTypeText"]="型号";
+		langDict["inESCTypeTextHelp"]="电调型号, 一般以最大允许的持续电流作为型号命名标准";	
+		
+		langDict["inESCContIText"]="持续电流";
+		langDict["inESCContITextHelp"]="电调最大允许的持续电流, 超过该值一段时间电调可能烧毁, 低于此值电调可持续稳定工作";
+		
+		langDict["inESCMaxIText"]="最大电流";
+		langDict["inESCMaxITextHelp"]="最大允许通过的瞬时电流";
+		
+		langDict["inESCMaxVText"]="电压最大锂电节数";
+		langDict["inESCMaxVTextHelp"]="用锂电池的电芯节数表示，3S的话表示最大支持3S的电池也就是3.7*3=11.1V的工作电压，4.2*3=12.6V的最大电压";	
+			
+		langDict["inESCRText"]="内阻";
+		langDict["inESCRTextHelp"]="电调的内部电阻, 会产生热损耗";	
+
+		
+		
+		//桨叶词条
+		langDict["inPropBrandText"]="螺旋桨品牌";
+		langDict["inPropBrandTextHelp"]="选择螺旋桨的品牌, 或者选择自定义输入详细参数\n选择\"自定义..\"会弹出详细的参数输入栏, 可以详细设置螺旋桨参数";
+		
+		langDict["inPropTypeText"]="型号";	
+		langDict["inPropTypeTextHelp"]="螺旋桨型号, 如10×47SF中, \"10\"表示螺旋桨的直径为10英寸, \"47\"表示螺距为4.7英寸\n\"SF\"表示慢速桨. 注意:105×45表示直径为10.5英寸.";	
+		
+		langDict["inPropDiaText"]="外径";
+		langDict["inPropDiaTextHelp"]="螺旋桨外径, 单位为英寸";
+		
+		langDict["inPropPitchText"]="螺距";
+		langDict["inPropPitchTextHelp"]="也叫桨距, 假设螺旋桨在一种不能流动的介质中旋转, 那么螺旋桨每转一圈, 就会向前进一个距离, 连续旋转就形成一段螺旋. 同一片桨叶旋转一圈所形成的螺旋的距离, 就称为螺距或桨距.";
+		
+		langDict["inPropbladeText"]="桨叶数";
+		langDict["inPropbladeTextHelp"]="桨叶数量, 可以认为螺旋桨的拉力系数和功率系数与桨叶数目成正比.";
+
+		langDict["inPropDiaUnitText"]="英寸";	
+		langDict["inPropPitchUnitText"]="英寸";
+		
+			
+		//其他
+		langDict["inMotorBrandSelText"]="*自定义.."
+		langDict["inChosenSelText"]="请选择.."
+		langDict["inChosenCustomText"]="*自定义.."	
+		langDict["inChosenCommonText"]="*常用...";
+		langDict["inChosenSelTextUAV"]="从数据库中选择多旋翼模型进行计算..";
+		langDict["inChoNotText"]="(*选填)";
+		langDict["inChoWeightText"]="重量 &nbsp;";	
+
+		//输出栏
+		//基本信息输出
+		langDict["outCalcText"]="计算";
+		langDict["outBasInfoText"]="基本信息";
+		langDict["NewsTitleText"]="新闻与文档";
+		langDict["outBasInfoTextHelp"]="多旋翼最基本的各项性能指标";
+		
+		langDict["outHoverTimeText"]="悬停时间";
+		langDict["outHoverTimeTextHelp"]="飞行器在空中悬停(螺旋桨总升力等于重力, 多旋翼受力平衡, \n在空中定点停留)时, 电池从满电量消耗至20%电量(对锂电池, \n单节电芯从满电4.2V, 放电至3.7V)持续的时间";	
+		
+		langDict["outLoadWeightText"]="剩余负载";
+		langDict["outLoadWeightTextHelp"]="曾加飞机负载重量直到油门杆到达90%时产生的总升力刚好能维持悬停, \n也可以认为是90%油门时各个桨叶产生的总升力减去飞机重量, \n注意：10%油门余量为了保证飞机的正常姿态稳定与抵抗扰动";
+		
+		langDict["outFlyAltText"]="最大起飞海拔";
+		langDict["outFlyAltTextHelp"]="随着海报高度的增加空气密度会下降, 等转速下产生的升力减小, \n海拔增加到某高度, 当使用90%油门杆时飞机刚好能够起飞(总升力=重力), 此海拔高度定义为多旋翼的最大起飞海拔\n注意：10%油门余量为了保证飞机的正常姿态稳定与抵抗扰动";	
+		
+		langDict["outFlyRangeText"]="单程飞行距离";
+		langDict["outFlyRangeTextHelp"]="飞行器单程最远能够水平飞行的距离,不考虑飞回起飞点, 该值与速度、阻力系数(气动外形决定)和倾斜角度相关, 是最优的飞行策略下得到结果";
+			
+		langDict["outForSpeedText"]="最大前飞速度";
+		langDict["outForSpeedTextHelp"]="飞行器最快能够维持的前飞速度, 该值与剩余动力, 阻力系数(气动外形决定)等因素相关";
+		
+		langDict["outMultiText"]="&nbsp;&nbsp;多旋翼";
+		
+		
+		langDict["outShareText"]="分享";
+		langDict["outShareTextHelp"]="您可以把性能评估结果分享给好友";
+		
+		//详细信息输出	
+		langDict["outDetInfoText"]="详细信息";		
+
+		//悬停时的性能输出
+		langDict["outHoverPerfText"]="悬停性能";
+		langDict["outHoverPerfTexthelp"]="飞行器悬停时的各项性能指标";
+		
+		langDict["outHovTimeText"]="悬停时间";
+		langDict["outHovTimeTextHelp"]="飞行器在空中悬停(螺旋桨总升力等于重力, 多旋翼受力平衡, \n在空中定点停留)时, 电池从满电量消耗至20%电量(对锂电池, \n单节电芯从满电4.2V, 放电至3.7V)持续的时间";	
+		
+		langDict["outHovThrPercText"]="油门百分比";
+		langDict["outHovThrPercTextHelp"]="维持悬停(螺旋桨总升力等于重力, 多旋翼受力平衡, \n在空中定点停留)时, 遥控器油门杆所处位置(电调输出PWM控制信号大小)百分比例. \n注意：电调通常会带有死区和饱和, 油门杆实际位置会存在偏差";
+			
+		langDict["outHovMotCurText"]="电调电流";
+		langDict["outHovMotCurTextHelp"]="悬停状态时, 单臂(单个电池-电调-电机回路)的等效电流大小";
+			
+		langDict["outHovMotRPMText"]="电机转速";
+		langDict["outHovMotRPMTextHelp"]="悬停时电机(螺旋桨)的旋转速度, 单位是转每分钟";	
+		
+		langDict["outHovMotPwrText"]="电机输出功率";
+		langDict["outHovMotPwrTextHelp"]="电机螺旋桨系统的输出机械功率, 等于电机扭矩乘以转速, \n其中电机扭矩是由螺旋桨转动导致空气反作用力产生的";	
+		
+		langDict["outHovBattVolText"]="电池输出电压";
+		langDict["outHovBattVolTextHelp"]="电池平均输出电压, 注意：随着电量减少, 电池输出电压会下降, 同时大电流会使电池内阻分去部分电压, 使输出电压比满电压低";	
+		
+		langDict["outHovBattCurText"]="电池输出电流";
+		langDict["outHovBattCurTextHelp"]="电池端输出的电流的总和, 包含各个机臂的电机电调电流以及飞控的电流消耗";	
+		
+		langDict["outHovEffText"]="能量效率";
+		langDict["outHovEffTextHelp"]="飞机机械能转换效率：实际机械功率(电机输出功率之和)除以电池端输出的电功率(电池输出电压乘以输出电流)";	
+			
+		
+		//最大油门性能输出
+		langDict["outMaxThrPerfText"]="最大油门性能";
+		langDict["outMaxThrPerfTextHelp"]="飞行器在满油门(遥控器油门杆推到最高位置, 电调以最大电压输出)状态下各项性能指标";
+		
+		langDict["outMaxTimeText"]="飞行时间";
+		langDict["outMaxTimeTextHelp"]="飞行器在最大油门状态下, 电池从满电量消耗至20%电量(对锂电池, \n单节电芯从满电4.2V, 放电至3.7V)持续的时间";
+		
+		langDict["outMaxLiftText"]="总升力";
+		langDict["outMaxLiftTextHelp"]="飞行器在最大油门状态下, 电机满速转动时所有螺旋桨产生的总升力大小";
+		
+		langDict["outMaxMotCurText"]="电调电流";
+		langDict["outMaxMotCurTextHelp"]="飞行器在最大油门状态下, 单臂(单个电池-电调-电机回路)的等效电流大小";
+		
+		langDict["outMaxMotRPMText"]="电机转速";
+		langDict["outMaxMotRPMTextHelp"]="飞行器在最大油门状态下, 电机(螺旋桨)的每分钟转过的圈数";
+		
+		langDict["outMaxMotPwrText"]="电机输出功率";
+		langDict["outMaxMotPwrTextHelp"]="电机螺旋桨系统的输出机械功率, 等于电机扭矩乘以转速, \n其中电机扭矩是由螺旋桨转动导致空气反作用力产生的";
+		
+		langDict["outMaxBattVolText"]="电池输出电压";
+		langDict["outMaxBattVolTextHelp"]="电池平均输出电压, 注意：随着电量减少, 电池输出电压会下降, 同时大电流会使电池内阻分去部分电压, 使输出电压比满电压低";
+		
+		langDict["outMaxBattCurText"]="电池输出电流";
+		langDict["outMaxBattCurTextHelp"]="电池端输出的电流的总和, 包含各个机臂的电机电调电流以及飞控的电流消耗";
+		
+		langDict["outMaxEffText"]="能量效率";
+		langDict["outMaxEffTextHelp"]="飞机机械能转换效率：实际机械功率(电机输出功率之和)除以电池端输出的电功率(电池输出电压乘以输出电流)";
+
+
+
+		//整体性能输出	
+		langDict["outIntPerfText"]="整体性能";	
+		langDict["outIntPerfTextHelp"]="飞行器在一般飞行状态下各项性能指标";
+
+		langDict["outTotGenFlyText"]="正常使用";
+		langDict["outTotGenFlyTextHelp"]="飞行器在一般飞行状态下(假设飞机以0.5m/s速度平飞)时, 飞行器的续航时间";
+		
+		langDict["outTotRemLoadText"]="剩余载重";
+		langDict["outTotRemLoadTextHelp"]="曾加飞机负载重量直到油门杆到达90%时产生的总升力刚好能维持悬停, \n也可以认为是90%油门时各个桨叶产生的总升力减去飞机重量, \n注意：10%油门余量为了保证飞机的正常姿态稳定与抵抗扰动";
+		
+		langDict["outTotMaxAltText"]="最大起飞海拔";
+		langDict["outTotMaxAltTextHelp"]="随着海报高度的增加空气密度会下降, 等转速下产生的升力减小, \n海拔增加到某高度, 当使用90%油门杆时飞机刚好能够起飞(总升力=重力), 此海拔高度定义为多旋翼的最大起飞海拔\n注意：10%油门余量为了保证飞机的正常姿态稳定与抵抗扰动";
+		
+		langDict["outTotMaxTiltText"]="最大倾斜角度";
+		langDict["outTotMaxTiltTextHelp"]="飞行器以固定倾角水平前飞情况下, 能达到的最大倾角大小";
+		
+		langDict["outTotMaxSpeedText"]="最大平飞速度";
+		langDict["outTotMaxSpeedTextHelp"]="在规定的气动外形下, 飞行器的最大平飞速度";
+		
+		//langDict["outTotMaxClimbAcText"]="最大爬升加速度";
+		//langDict["outTotMaxClimbAcTextHelp"]="飞行器满油门竖直方向爬升时, 能够产生的最大竖直加速度大小";
+
+		langDict["outTotWeightText"]="整机重量";
+		langDict["outTotWeightTextHelp"]="飞机的整体重量，根据输入的各个配件型号参数估计得到";
+		
+		langDict["outTotMaxRangText"]="单程飞行距离";
+		langDict["outTotMaxRangTextHelp"]="在规定的气动外形下, 飞行器能够飞行的最远距离";
+		
+		langDict["outTotWindResiText"]="抗风等级";
+		langDict["outTotWindResiTextHelp"]="在规定的气动外形下, 飞行器能够承受的风力等级, ";
+		
+		langDict["outWindDegText"]="级";	
+
+
+
+		langDict["reTureTitleText"]="误差反馈：本网站加入了自主学习校正算法，您反馈的数据(审核后)会用于校正我们的计算模型，使结果越来越准确。";
+		langDict["reTrueLoTimeText"]="实际悬停时间";
+		langDict["reTrueThrText"]="悬停油门";
+		langDict["reTrueWeightText"]="整机重量";
+		langDict["reTrueSpeedText"]="最大前飞速度";
+		langDict["reTrueDistText"]="单程飞行距离";
+		langDict["reTrueMsgText"]="其他误差 / 器件库缺失 / 意见或建议 / 希望增加的功能 / 联系方式";
+		langDict["reTrueSendText"]="提交反馈";
+		langDict["reTrueEmailText"]="邮箱";
+		langDict["reTrueNoMsgErr"]="无有效数据反馈，点击确定返回";
+		langDict["reTrueMsgSucc"]="感谢您的反馈，数据已提交。请保证邮箱填写正确，方便我们尽可能快地联系您。";
+
+
+
+		langDict["outMathModelText"]='控制模型&nbsp;&nbsp;(<a  target="_blank" href="js/MathModelDocEn.pdf">建模方法和源码</a>)';
+		langDict["outTotMassText"]="多旋翼总质量";
+		langDict["outGText"]="重力加速度";
+		langDict["outInMatText"]="转动惯量矩阵";
+		langDict["outInMat1Text"]="J=diag(J<sub>xx</sub>, J<sub>yy</sub>, J<sub>zz</sub>)";		
+		langDict["outdMcText"]="多旋翼机身半径(1/2轴距)";
+		langDict["outCtText"]="单桨综合拉力系数,拉力(N)除以转速²(rad/s),即(C<sub>t</sub>=T<sub>p</sub>/&#969;²)";
+		langDict["outCmText"]="单桨综合力矩系数,力矩(N.m)除以转速²(rad/s),即(C<sub>m</sub>=M<sub>p</sub>/&#969;²)";
+		langDict["outCRText"]="电机曲线：输入油门量σ (0~1)到电机稳态转速&#969;<sub>ss</sub> (rad/s)";
+		langDict["outWbText"]="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( &#969;<sub>ss</sub>=C<sub>R</sub>*σ+&#969;<sub>b</sub> )";		
+		langDict["outJmText"]="电机螺旋桨转动惯量";
+		langDict["outTmText"]="电机响应时间常数";
+		langDict["outCdText"]="机身阻力系数，阻力(N)除以飞行速度²(m/s)，即 (C<sub>d</sub>=D/V²)";
+		langDict["outCMdText"]="机身阻尼力矩系数，力矩(N)除以转速²(rad/s)，即(C<sub>dm</sub>=M/w²)";
+
+
+
+		//逆向建模
+		langDict["uiDesignText"]="设计";
+		langDict["reCopterTypeText"]="造型结构";
+		langDict["reCopterTypeOp0Text"]="三旋翼";
+		langDict["reCopterTypeOp1Text"]="四旋翼";
+		langDict["reCopterTypeOp2Text"]="六旋翼";
+		langDict["reCopterTypeOp3Text"]="八旋翼";
+		langDict["reCopterTypeOp4Text"]="十八旋翼";
+		langDict["reCopterTypeOp5Text"]="三轴六旋翼";
+		langDict["reCopterTypeOp6Text"]="四轴八旋翼";
+		langDict["reCopterTypeOpOtherText"]="其他构型(付费)";
+		langDict["OtherTypeAlertText"]="这是一个付费项目，您可以通过邮件或公共号联系我们，给出构型与性能需求，我们会为你计算最优的解决方案。";		
+		langDict["reTotWeiText"]="整机重量";
+		langDict["reHovTimeText"]="悬停时间";
+		langDict["reAltText"]="飞行海拔";
+		langDict["reDesignText"]="设计用途";
+		langDict["reDesignOp0Text"]="悬停飞行";
+		langDict["reDesignOp1Text"]="最大载重"
+		langDict["reDesignOp2Text"]="机动特技";
+		langDict["reDesignOp3Text"]="航拍摄影";
+		langDict["reDesignOp4Text"]="高速前飞";
+		langDict["reDesignOp5Text"]="植保植保";
+		langDict["reDesignOp6Text"]="货运运输";
+		langDict["reDesignOp7Text"]="行业巡检";
+		langDict["reDesignOp8Text"]="勘探侦查";
+		
+		langDict["reBatDensText"]="电池类型";
+
+		langDict["selectDatabaTypeText"]="选择搜索数据库";
+		langDict["selectDatabaTypeDefaultText"]="所有数据库";
+
+		langDict["reCalcText"]="逆向求解！";
+		langDict["reItemOutText"]="推荐配置";
+		
+		langDict["reTabNumText"]="序号";
+		langDict["reTabMotText"]="电机型号";
+		langDict["reTabEscText"]="电调型号";
+		langDict["reTabPropText"]="桨型号";
+		langDict["reTabBattText"]="电池型号";
+		langDict["reTabFrSzText"]="机架轴距";
+		langDict["reTabHvTmText"]="悬停时间";
+		langDict["reTabRmLdText"]="可用负载";
+		langDict["reTotWeiText"]="整机重量<br>(包括负载)";
+		
+		//langDict[""]="";
+		
+			
+		//错误提示
+		langDict["errValTooSmall"]="错误：输入值太小, 请重新输入. ";
+		langDict["warValTooSmall"]="警告：输入值偏小. "	;		
+		langDict["tipAttUnit"]="注意：这里的单位是 ";	
+		langDict["errNoNum"]="错误：输入数值格式不正确, 请重新输入.";
+		langDict["errPosiNum"]="错误：输入值应该为正.";
+		langDict["errNumBigTh"]="错误：输入值应该大于 ";
+		langDict["errNumSmalTh"]="错误：输入值应该小于 ";
+		langDict["errNumBtw"]="错误：输入值应该在";
+		langDict["errNumBtw0"]="到";
+		langDict["errNumBtw1"]="之间.";
+		
+		langDict["errMotParaMiss"]="错误: 请补充完整电机参数.";
+		langDict["errPropParaMiss"]="错误: 请补充完整螺旋桨参数.";	
+		langDict["errESCParaMiss"]="错误: 请补充完整电子调速器(电调)参数.";
+		langDict["errBattParaMiss"]="错误: 请补充完整电池参数.";		
+
+
+		langDict["contactInfoText"]=" \
+			<h2><strong>联系方式</strong></h2>  \
+	    <div class='bg'></div>  \
+	      <br>\
+	    <p><strong>电话：</strong> 86-10-82338464;<br> \
+	       <strong>传真：</strong> 86-10-82338414;<br>\
+	       <strong>邮箱：</strong><br>\
+	       全&nbsp;&nbsp;权 副教授：</strong> <a href='Mailto:qq_buaa@163.com?subject=Contact from flyeval.com'>qq_buaa@163.com</a>;<br> \
+		   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>\
+	       戴训华 副教授：<a href='Mailto:dai.xh@csu.edu.cn?subject=Contact from flyeval.com'>dai.xh@csu.edu.cn</a>;<br>\
+		   <a href='https://faculty.csu.edu.cn/daixunhua/zh_CN'>https://faculty.csu.edu.cn/daixunhua/zh_CN</a><br>\
+	    </p>  	\
+	    	<p>\
+	       <strong>微信扫描下面二维码关注我们, 获取更多的教程与资讯并可以直接与我们交流。</strong>\
+	      </p> \
+		";
+
+		langDict["contactTitleText"]="\
+	      <h2>资讯信息</h2>  \
+		  <p>1、网站的性能评估算法已发表为期刊论文：《D. Shi, X. Dai, X. Zhang, and Q. Quan, “A practical performance evaluation method for electric multicopters,” IEEE/ASME Transactions on Mechatronics, vol. 22, no. 3, pp. 1337–1348, 2017.》下载地址：<a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2017ShiAPracticalPerf.bib'>[BibTex]</a></p>  \
+		  <p>2、部分多旋翼快速设计算法已发表为期刊论文：《X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “An Analytical Design Optimization Method for Electric Propulsion Systems of Multicopter UAVs with Desired Hovering Endurance,” IEEE/ASME Transactions on Mechatronics, vol. 24, no. 1, pp. 228–239, 2019.》，下载地址：<a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2019DaiAnAnalytical.bib'>[BibTex]</a><\p> \
+		  <p>3、 部分多旋翼效率优化算法已发表为期刊论文：《X. Dai, Q. Quan, J. Ren, and K.-Y. Cai, “Efficiency Optimization and Component Selection for Propulsion Systems of Electric Multicopters. IEEE Transactions on Industrial Electronics, vol. 66, no. 10, pp. 7800–7809, 2019.》，下载地址： <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/201903DaiEfficiencyOptimization.bib'>[BibTex]</a><\p> \
+		  <p>4、 部分无人机建模与可信度评估方法已发表为期刊论文：《X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “Simulation Credibility Assessment Methodology With FPGA-based Hardware-in-the-Loop Platform,” IEEE Transactions on Industrial Electronics, vol. 68, no. 4, pp. 3282-3291, 2021.》，下载地址： <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/2020DaiSimulation.bib'>[BibTex]</a><\p> \
+		  <p>5、 部分无人机仿真与测试方法已发表为期刊论文：《X. Dai, C. Ke, Q. Quan and K. -Y. Cai, “RFlySim: Automatic test platform for UAV autopilot systems with FPGA-based hardware-in-the-loop simulations,”  Aerospace Science and Technology, vol. 114, p. 106727, 2021.》，下载地址： <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.pdf'>[PDF]</a>, <a  target='_blank' class='pdf'  href='js/Dai2021RflySim.bib'>[BibTex]</a><\p> \
+		";
+
+		langDict["contactBookText"]="<p>对多旋翼更详细的介绍与算法介绍，可以参考我们的中文教材《多旋翼飞行器设计与控制》。该书目前在<a  target='_blank' href='https://www.amazon.cn/dp/B07B61G8S9'>[亚马逊]</a> <a  target='_blank' href='https://detail.tmall.com/item.htm?id=565935245302'>[淘宝]</a> <a  target='_blank' href='http://product.dangdang.com/1178459377.html'>[当当]</a> <a  target='_blank' href='https://item.jd.com/12322312.html'>[京东]</a> 等网站有售。</p>\
+		<p><img src='images/Quan2017IntroCh1.jpg' width='255px'/><img src='images/Quan2017IntroCh2.jpg' width='255px'/></p>\
+		";
+
+		langDict["contactMsgNaEmErr"]="请填写完整你的姓名、邮箱、公司以及信息，以便我们及时给你答复。"
+		langDict["contactMsgSend"]="谢谢. 您的下载请求已经被成功发送，请几分钟后检查您的邮箱."
+		langDict["contactMsgFail"]="对不起. 服务器向您提供的邮箱发送邮件失败，请选择其他邮箱或联系我们"
+		langDict["contactEmailFormErr"]	="邮箱格式错误，请检查输入的邮箱地址是否正确。"
+
+		langDict["contactNameText"]="<strong>姓名</strong>";
+		langDict["contactEmailText"]="<strong>邮箱</strong>";	
+		langDict["contactCompText"]="<strong>公司</strong>";
+		langDict["contactSubjText"]="<strong>主题</strong>";		
+		langDict["contactMsgText"]="<strong>留言</strong>";
+		langDict["contSendMsgText"]="获取下载链接";
+
+		langDict["CourseNavText"]=heredoc(function(){/*
+			<li><a href="#Intro" style="font-size:17px;">&nbsp; 课程简介</a></li>
+			<li><a href="#Used" style="font-size:17px;">1. 实验平台</a></li>
+			<li><a href="#Learned" style="font-size:17px;">2. 课程内容</a></li>
+			<li><a href="#Perform" style="font-size:17px;">3. 实验框架</a></li>
+			<li><a href="#Advanced" style="font-size:17px;">4. 高级功能</a></li>
+			  <li><a href="#Download" style="font-size:17px;">5. 软件下载</a></li>
+			  <li><a href="#Cases" style="font-size:17px;">6. 应用案例</a></li>
+			  <li><a href="#FAQ" style="font-size:17px;">7. 常见问题</a></li>
+			  <li><a href="#Offline" style="font-size:17px;">8. 线下课程</a></li>
+			 */});
+
+		langDict["CourseIntroText"]="基于MATLAB和Pixhawk的多旋翼飞行器设计与控制系列实验";
+		langDict["CourseIntro1Text"]=heredoc(function(){/*
+			多旋翼飞行器设计与控制实验是北航可靠飞行控制研究组2020年发布的最新实验教材《全权, 戴训华, 王帅著. 多旋翼飞行器设计与控制实践[M]. 北京:电子工业出版社. 2020》的配套实验. 
+			<br>本书作为2017年出版的多旋翼理论教材《全权著. 多旋翼飞行器设计与控制[M]. 杜光勋, 赵峙尧, 戴训华, 等译. 北京: 电子工业出版社, 2017》的姐妹篇，侧重将理论知识通过Simulink与基于模型的设计方法快速在真机上实现.
+	  	*/});
+	  	langDict["CourseIntro2Text"]=heredoc(function(){/*
+			<img title="《多旋翼飞行器设计与控制实践》, 电子工业出版社, 2020" src="images/course/BookPageNewZh.jpg" width="auto" height="450px">
+			<img title="《多旋翼飞行器设计与控制》, 电子工业出版社, 2017" src="images/course/BookPageOldZh.jpg" width="auto" height="450px">
+	  	*/});
+		langDict["CourseIntro3Text"]="根据本实验书的指导，并依靠本网站介绍的软硬件工具，你可以完成下列实验：";
+	  	langDict["CourseIntro4Text"]=heredoc(function(){/*
+              <img src="images/course/PlatGif1.gif" title="软件在环仿真" width="350px" height="auto" style="margin:0px 5px;"><img src="images/course/PlatGif2.gif" title="自动代码生成" width="350px" height="auto" style="margin:0px 10px;">
+              <img src="images/course/PlatGif3.gif" title="硬件在环仿真" width="350px" height="auto" style="margin:0px 5px;"><img src="images/course/PlatGif4.gif" title="带安全防护的真机实验" width="350px" height="auto" style="margin:0px 10px;">
+	  	*/});		  
+
+	  	langDict["CourseIntro5Text"]="我们也发布了一个视频来展示实验平台的主体功能。";
+
+		  langDict["CourseUsedText"]=heredoc(function(){/*
+	        <h2>1. 实验平台</h2>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+           <p>所有实验采用基于模型的设计思想，实验平台主要包括下图几个部分：</p>  
+           <img src="images/course/CompositionZh.jpg" title="课程实验平台主要组成部分" width="550" height="auto" style="margin:0 130px">
+           <div style="margin:5px 5px 5px 5px;width:700px;float:left">
+	         	<p>(1) 最为广泛使用的飞行平台--多旋翼飞行器，作为飞行平台；
+             <br>(2) 最为广泛使用的开源飞行器自驾仪系统--Pixhawk/PX4，作为控制平台； 
+			 <br>(3) 控制工程领域最为广泛使用编程工具之一--MATLAB/Simulink，作为编程语言。 </p>
+			 <p>下图展示了几款支持的Pixhawk硬件型号，可以适用于不同性能需求的实飞场景</p>			 
+             <img src="images/course/PixhawksEn.jpg" title="支持的Pixhawk飞控硬件" width="550" height="auto" style="margin:0 120px">
+			</div>
+		*/});
+
+		langDict["CourseLearnedText"]=heredoc(function(){/*
+          <h2>2. 课程内容</h2>  
+          <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+	        <p>本课程包含十二讲，前四讲主要介绍软硬件实验平台基本使用方法，后八讲包含了八个实验。这八个实验可以分为四个板块，即设计和建模实验版块、估计实验版块、控制实验版块以及决策实验版块。</p>
+          <img src="images/course/CoursesZh.jpg" width="600" height="auto" style="margin:0 100px">
+          <div style="margin:5px 5px 5px 5px;width:830px;float:left">
+            <p><br>在从本网页的<a href="#Download" style="text-decoration: underline">下载页面</a> 获取到安装文件后, 下面四讲内容将介绍如何安装并应用本课程的软件包:
+            <br><strong>第01讲:</strong>	课程介绍. <a  target="_blank" class="pdf" href="doc/第01讲_课程介绍.pdf">[pdf]</a>
+            <br><strong>第02讲:</strong>	实验平台配置. <a  target="_blank" class="pdf" href="doc/第02讲_实验平台配置.pdf">[pdf]</a>
+            <br><strong>第03讲:</strong>	实验平台使用. <a  target="_blank" class="pdf" href="doc/第03讲_实验平台使用.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e0.zip">[Code]</a>
+            <br><strong>第04讲:</strong>	实验流程. <a  target="_blank" class="pdf" href="doc/第04讲_实验流程.pdf">[pdf]</a>
+            
+          </p>
+          <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+            
+            <p>接下来的八讲对应了本课程的八个实验，我们提供了详细的例程和源码，保证每个实验或者每个版块的实验可以单独完成. 
+            <br><strong>第05讲:</strong>	实验一：动力系统设计. <a  target="_blank" class="pdf" href="doc/第05讲_动力系统设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e1.zip">[Code]</a>
+            <br><strong>第06讲:</strong>	实验二：动态建模. <a  target="_blank" class="pdf" href="doc/第06讲_动态建模实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e2.zip">[Code]</a>
+            <br><strong>第07讲:</strong>	实验三：传感器标定. <a  target="_blank" class="pdf" href="doc/第07讲_传感器标定实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e3.zip">[Code]</a>
+            <br><strong>第08讲:</strong>	实验四：滤波器设计. <a  target="_blank" class="pdf" href="doc/第08讲_滤波器设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e4.zip">[Code]</a>
+            <br><strong>第09讲:</strong>	实验五：姿态控制器设计. <a  target="_blank" class="pdf" href="doc/第09讲_姿态控制器设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e5.zip">[Code]</a>
+            <br><strong>第10讲:</strong>	实验六：定点位置控制器设计. <a  target="_blank" class="pdf" href="doc/第10讲_定点位置控制器设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e6.zip">[Code]</a>
+            <br><strong>第11讲:</strong>	实验七：半自主控制模式设计. <a  target="_blank" class="pdf" href="doc/第11讲_半自主控制模式设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e7.zip">[Code]</a>
+			<br><strong>第12讲:</strong>	实验八：失效保护逻辑设计. <a  target="_blank" class="pdf" href="doc/第12讲_失效保护逻辑设计实验.pdf">[pdf]</a>&nbsp;&nbsp;<a  class="zip" href="res/e8.zip">[Code]</a>
+			</p>
+			<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+			<p> 在附录部分，我们还介绍了RflySim平台的高级功能，阅读下面PPT来了解更多。
+				<br><strong>第13讲：</strong>	附录A：RflySim平台高级功能介绍. <a  target="_blank" class="pdf" href="doc/第13讲_RflySim平台高级功能介绍.pdf">[pdf]</a>
+			</p>			
+            <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+            <p>最新的源码与课件也可以在我们的Github页面下载: <a  target="_blank" href="https://github.com/RflySim/RflyExpCode" >https://github.com/RflySim/RflyExpCode</a></p>
+          </div>
+		*/});		
+		
+		langDict["CoursePerformText"]=heredoc(function(){/*
+	        <h2>3. 实验框架</h2>  
+          <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+           <p>每个任务包括由浅入深的三个分步实验，分别为基础实验、分析实验和设计实验。每个实验循序渐进，使得不同背景的读者都能从中受益。每个实验需要在MATLAB/Simulink中实现，并在发布的软件在环仿真平台中进行仿真测试。之后，读者需要将通过仿真测试的控制算法，通过代码的自动生成技术下载至Pixhawk自驾仪中，与给定的实时仿真软件形成闭环，进行硬件在环(HIL)仿真测试。在整个过程中，读者必须熟悉整个快速开发流程，深入分析系统的组成和原理，清楚了解系统原理及PID等设计方法，才能建立合理的数学模型，以及设计合理的方案。进一步，读者需要掌握多种现代工具，如在开发和计算机仿真时需要熟练掌握MATLAB/Simulink和FlightGear等软件；在HIL仿真测试时学习HIL仿真软件、Pixhawk自驾仪及遥控器的使用。设计的任务还包括实飞实验，让理论真正联系实际. </p>
+           <img src="images/course/StructureZh.jpg" alt="screen 1" width="600" height="auto" style="margin:0 100px">
+           <div style="margin:5px 5px 5px 5px;width:830px;float:left"><p>本实验平台的各个软硬件组件与整体流程的关系如下，它们将会在多旋翼飞行器开发的各个阶段都发挥着重要的作用.</p></div>
+          <img src="images/course/HardwareZh.jpg" alt="screen 1" width="600" height="auto" style="margin:10px 100px">
+		  */});
+
+		  langDict["CourseDownloadText"]=heredoc(function(){/*
+          <h2>5. 软件下载</h2>  
+          <p>请填写好联系方式，我们会将最新的【RflySim基础版】和【RflySim高级版】(安装包：RflySimAdvFree-v2.46-20220220.iso，在线文档：http://doc.rflysim.com)下载链接发送到您的邮箱。由于邮箱回复存在一定延迟，请您耐心等几分钟再去检查收件箱；如果您没有收到邮件，请检查邮箱的垃圾箱；如果仍然没有发现邮件，请您更换邮箱地址或者直接发送邮件到<a class="mail"  href="Mailto:service@rflysim.com?subject=Contact from flyeval.com for download link">service@rflysim.com</a>来获取下载链接.</p>
+		  */});
+
+		  langDict["CourseAdvancedText"]=heredoc(function(){/*
+	        <h2>4. 高级功能</h2>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+	         <p>         	
+			<strong>【RflySim基础版】:</strong> 是随书发布的是基础功能和课程。我们的【RflySim高级版】平台还提供一系列的高级功能（目前暂不免费开放），由卓翼智能<a  target="_blank" href="http://www.droneyee.cn" >http://www.droneyee.cn</a>支持。高级功能将覆盖多种不同机型的视觉、集群与人工智能控制。您可以直接电话联系卓翼智能或邮箱:  <a class="mail"  href="Mailto:service@rflysim.com?subject=来自flyeval.com的高级功能咨询">service@rflysim.com</a>来咨询高级平台的软硬件购买。
+		   <br><strong>(1) 简单易用</strong>. 在Windows平台下进行一键安装、一键代码生成、一键固件部署、一键软硬件在环仿真和快速实飞, 非常方便易用。用户不需要了解飞控源码、Linux编程、C/C++编程、网络通信、飞机组装等底层知识，只需具备基础的Simulink（或Python）知识，即可快速将自己的算法经过层层验证并应用于真机上，有助于更专注于算法的开发与测试.	
+		   </p> 
+			<div style="margin:10px 10px;"><img src="images/course/AutoInstall.gif" title="一键安装与环境部署" width="auto" height="215px" style="margin:0px 5px;"><img src="images/course/PX4SITLSim.gif" title="一键连接PX4自驾仪进行多机集群软件在环仿真" width="auto" height="215px" style="margin:0px 10px;">
+          	</div>
+			 <p>
+			 <br>  <strong> &emsp;&emsp;左图: 一键安装与部署;  &emsp;&emsp; &emsp;&emsp; &emsp;&emsp;右图: 一键连接PX4-SITL/Simulink/QGC进行任意多机的集群软件在环仿真</strong>;
+			<br><strong>(2)	多机集群仿真</strong>. 在同一局域网下，读者可以使用CopterSim连接多个Pixhawk进行硬件或软件在环仿真。同时，读者还可以使用Simulink或者C++程序控制飞行器，控制指令会由Mavlink协议经过串口（数传）或者网络（WIFI）发送给Pixhawk.
+			 <br><strong>(3) 多种机型仿真</strong>. 支持固定翼、垂直起降飞行器、小车、船等不同机型。 支持在Simulink中自行设计机架类型和仿真模型，进一步实验平台能被拓展到任意无人系统中.
+			</p> 
+			<div style="margin:10px 10px;"><img src="images/course/UE4FixedWing.jpg" title="固定翼硬件在环仿真森林场景" width="auto" height="215px" style="margin:0px 5px;"><img src="images/course/UE4AAR.jpg" title="UE4固定翼无人机空中对接场景" width="auto" height="215px" style="margin:0px 10px;">
+          	</div>			
+			 <p>
+			  <br>  <strong> &emsp;&emsp;&emsp;&emsp;左图: 固定翼硬件在环仿真森林场景;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;右图: UE4固定翼无人机空中对接场景</strong>;
+			<br><strong>(4)	高逼真三维仿真</strong>. 通过Unreal Engine 4 (UE4) 开发高度逼真的三维场景。根据我们提供的源码和教程，读者可以快速开发一个室内或室外三维场景用于仿真或基于视觉的算法开发.
+			</p>
+           <div style="margin:10px 5px;"><img src="images/course/AdvancedGIF2.gif" title="无人车的室外硬件在环仿真场景"  width="auto" height="215px" style="margin:0px 10px;">
+            <img src="images/course/AdvancedGIF3.gif" title="集群控制和硬件在环仿真" width="auto" height="215px" style="margin:0px 5px;">
+          </div>			
+			<p>
+			<br>  <strong> &emsp;&emsp;&emsp;&emsp;左图: 无人车的室外硬件在环仿真场景;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;右图: 集群控制和硬件在环仿真</strong>;
+			<br><strong>(5)	基于视觉的控制</strong>. 基于UE4的三维视景平台还支持视角切换功能，可以获取方便地获取到多个视角的图像数据。还支持通过共享内存的方式在Simulink、Python、C/C++等代码平台中实时获取到图像数据并进行处理，处理得到的视觉数据可以通过UDP再返回给CopterSim或者Simulink控制，形成带有视觉的硬件在环仿真闭环.
+			 </p> 
+           <div style="margin:10px 5px;"><img src="images/course/AdvancedGIF1.gif" title="基于UE4的室内硬件在环仿真" width="auto" height="215px" style="margin:0px 5px;"><img src="images/course/AdvancedGIF4.gif" title="基于视觉的穿环控制例程" width="auto" height="215px" style="margin:0px 5px;">
+		  </div>
+		  <p>
+			<strong> &emsp;&emsp;&emsp;&emsp;左图: 基于UE4的室内硬件在环仿真;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;右图: 基于视觉的一键穿环控制例程</strong>;
+		   </p>
+			<div style="margin:10px 5px;"><img src="images/course/AdvancedGIF9.gif" title="电机失效故障硬件在环仿真" width="auto" height="215px" style="margin:0px 5px;"><img src="images/course/AdvancedGIF10.gif" title="Simulink控制集群飞机室内飞行实验" width="auto" height="215px" style="margin:0px 5px;">
+		  </div>
+		  <p>
+			<strong> &emsp;&emsp;&emsp;&emsp;左图: 电机失效故障硬件在环仿真;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&emsp;右图: Simulink控制集群飞机室内飞行实验</strong>;
+		   </p>
+
+
+		  */});
+
+		  langDict["CourseMoreAdvancedText"]=heredoc(function(){/*
+	        <h3>【RflySim企业版】：基于FPGA实时硬件在环仿真的无人系统安全性自动测试框架</h3>  
+	         <div class="bg" style="margin:0px 0px 10px 0px;"></div>			 
+			<p>
+			本平台利用高性能的实时仿真计算机，用实时系统来模拟飞机动态，并用FPGA来模拟所有的飞控传感器芯片，再将芯片级别信号直接连接(屏蔽原有机载传感器)到飞控处理器上，从而实现真正意义上的硬件在环仿真。
+			<br><strong>平台优势：</strong>
+			<br><strong>(1) 扩展性：</strong>模型在Simulink中搭建并通过自动代码生成部署到实时计算机，因此在Simulink中改变机型特性，本平台可以模拟任意的载具系统，包括无人机(多旋翼、固定翼、垂直起降等)、无人车、无人船等。
+			</p>			
+           <div style="margin:10px 10px;"><img src="images/course/FPGAHIL1.jpg" title="各种不同无人载具系统的统一测试框架" width="auto" height="270px" style="margin:0px 10px;"><img src="images/course/FPGAHIL2.jpg" title="基于FPGA的硬件在环实时测试硬件平台" width="auto" height="270px" style="margin:0px 10px;">
+		  </div>
+		  <p>		  
+			<strong> &emsp;&emsp; 左图：各种不同无人载具系统的统一测试框架; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;右图：基于FPGA的硬件在环实时测试硬件平台</strong>			  			
+			<br><strong>(2) 实用性：</strong>即插即测，不需要接触或修改飞控软件，只需要知道飞控使用的传感器硬件型号，即可多任意品牌飞控硬件进行黑盒测试。
+			<br><strong>(3) 标准性：</strong>平台采用模块化图形编程，每个模型组件尽量使用经过认证的标准模型，来保证模型标准化。整个仿真软件通过自动代码生成得到，确保了开发过程标准化，排除了人工的差异与疏忽对仿真模型的影响。
+		  </p>
+           <div style="margin:10px 10px;"><img src="images/course/AutoCodeFPGA.jpg" title="仿真软件自动代码生成框架" width="auto" height="195px" style="margin:0px 10px;"><img src="images/course/AutoTestFPGA.jpg" title="自动安全测试与评估框架" width="auto" height="195px" style="margin:0px 10px;">
+		  </div>		  			
+		  <p>
+		  <strong> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 左图：仿真软件自动代码生成框架; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;右图：自动安全测试与评估框架</strong>			
+			<br><strong>(4) 自动化：</strong>只要建模足够全面且精确，本平台可以模拟室外飞行实验的正常与故障情形，而且可以自动化进行测试、用例遍历与安全性评估，提高无人系统的可靠性。
+		  </p>
+           <div style="margin:10px 15px;float:left"><img src="images/course/FPGAHIL3.jpg" title="不同无人载具系统的统一建模与仿真框架" width="750px" height="auto" style="margin:5px 10px;">
+          </div>		  		  
+		  <p>本平台的更详细视频介绍如下： </p>
+		  */});
+
+
+		  langDict["CourseCasesText"]=heredoc(function(){/*
+		 <h2>6. 应用案例</h2>  
+		 <div class="bg" style="margin:0px 0px 10px 0px;"></div>
+         <p>基于自抗扰控制（ADRC）算法的姿态控制. 该控制器由跟踪微分器、非线性状态反馈和扩张状态观测器组成，其结构如下:</p>
+         <img src="images/course/ADRCZh.jpg" alt="screen 1" width="600" height="auto" style="margin:0 80px">
+         <div style="margin:5px 5px 5px 5px;width:830px;float:left">
+         <p>这里对姿态控制使用ADRC，由第六章的动态系统建模可知，姿态动力学模型是一个二阶系统，所以可以使用二阶形式的ADRC方法。总体过程如视频所示</p>
+        </div>
+		  */});
+
+		  langDict["CourseFAQText"]=heredoc(function(){/*
+	   <h2>7. 常见问题(FAQ)</h2> 
+	   <div class="bg" style="margin:0px 0px 10px 0px;"></div> 
+       <p>如果你有任何问题都可以在Github中提交: <a  target="_blank" href="https://github.com/RflySim/RflyExpCode/issues" >https://github.com/RflySim/RflyExpCode/issues </a>. </p>
+       <p>下面是目前搜集到的一些常见问题，希望对您有所帮助。</p>
+			 */});		  
+
+		langDict["CourseOfflineText"]=heredoc(function(){/*
+		<div  class="serv"  id="Offline">                  
+		<h2>8. 线下课程</h2> 
+		<div class="bg" style="margin:0px 0px 10px 0px;"></div>
+		<p>为了让更多同学能够接触到实验课程，我们开设了线上（网络）实验课程。考虑到“硬件在环仿真”和“实际飞行实验”需要教具、 系统部署和助教当面解疑等诸多不便，目前不便于推广，故我们仅将仿真视频公开。对于实验方面，仅需要Matlab和Simulink即可。线上（网络）实验学习链接：</p>
+		<center><p><a  target="_blank" href="http://www.shenlanxueyuan.com/course/155" >http://www.shenlanxueyuan.com/course/155 </a></p> </center>
+		<p>为了满足一部分同学开发需求，我们也开设了线下实验课程。在课程上，可以学习基于模型设计整套流程：设计-仿真-代码自动生成-硬件在环验证。通过学习，可以避免接触底层驱动，降低开发难度以及缩短开发周期，并且代码移植性好，使得会Matlab就能开发飞控。 线下实验课程会根据我们新的进展不断进行更新，具体请联系：
+		<br>&emsp;&emsp;<a  target="_blank" href="https://www.chinarobot.com/drone-MBD-course" >https://www.chinarobot.com/drone-MBD-course</a>， 电话：14706265391，报名微信：jiushihanhan</p>
+		</div>	 
+		*/});	
+
+
+		ErrCode=new Array();
+		ErrCode["0"]="错误：<br>";
+		ErrCode["1"]="* 电流超过电机电流上限, 请检查电机或者螺旋桨选择是否正确.";
+		ErrCode["2"]="* 电流超过电调电流上限, 请检查动力系统配置或选用更大功率电调.";
+		ErrCode["3"]="* 电流超过电池限制, 请检查动力系统配置或选用更大放电倍率的电池.";
+		ErrCode["4"]="* 无法安全起飞, 请减轻机身重量或选用拉力更大的动力系统.";
+		ErrCode["5"]="* 机身与螺旋桨尺寸不匹配, 请减小螺旋桨尺寸或增大轴距.";
+		ErrCode["6"]="* 飞行海拔过高拉力不足, 请选用拉力更大的动力系统或减轻机身重量或者降低飞行海拔.";
+		ErrCode["7"]="* 数据库无法连接.";
+		ErrCode["8"]="* 数据传输错误.";	
+		ErrCode["9"]="* 电池电压大于电调电压上限，请检查电调或电池是否匹配.";	
+		ErrCode["10"]="* 没有匹配的结果, 请修改配置";
+		ErrCode["11"]="* 电机+电池+桨+电调重量大于输入整机质量，请检查重量输入";
+		ErrCode["12"]="* 数据库中没有找到适合的配置，请修改输入需求再重试";
+	
+		ErrCode["30"]="警告：<br>";
+		ErrCode["31"]="* 为确保机动性和抗扰性, 油门建议小于80%.";
+		ErrCode["32"]="* 飞行器效率很低.";
+		ErrCode["33"]="* 续航时间不合理,无完全符合的结果,输出靠近要求的配置";
+		
+		
+		UAVTypeName=new Array();
+		UAVTypeName["0"]="三旋翼";
+		UAVTypeName["1"]="三轴六旋翼";
+		UAVTypeName["2"]="四旋翼";
+		UAVTypeName["3"]="六旋翼";
+		UAVTypeName["4"]="四轴八旋翼";
+		UAVTypeName["5"]="八旋翼";
+		
+		
+		ShareDef=langDict["descrip"];
+		
+		
+		ShareMsg=["我的多旋翼可以悬停","分钟, 击败了","%的多旋翼。网站计算结果非常准确, 快来测试你的无人机的各项性能吧！"];
+
+		//品牌中文名向量	
+		BatteryLang=["","格氏电池","亚拓","","","","多好达","","次世代","双天","达普","鹰牌","","","","赤道","花牌","","海波浪","劲驰天下","酷点","狮子","","","","尖峰动力","富力","","","思凯利","","世豹","","","","","野蝎子","","有棵树","","巴毅"];
+
+		MotorLang=["","风神","","","","","黑魔法","城堡","猎豹","眼镜蛇","塞隆","","大疆","","双天","戴蒙德","螃蟹王国 ","","","银燕","","恩格尔","","","","","","","菲摩斯","飞速达","嘉迪","泰世","","","基爱斯","骇客","台风","恒力源","","","","","","飓风","","开普发","科达","","","","豹子","","","","好贝","","迷航","","","","","","","","","","","","","","昆腾","","","","","","天蝎星","","朗宇","三普","","塔罗","","腾翔","雷虎","老虎电机","雄猫","","三力","","","","","","","新西达",""];
+
+		ESCLang=["通用","","","","","","","","奔牛","","丹锂","大疆","双天","","螃蟹王国","银燕","","","","","飞盈佳乐","菲摩斯","嘉迪","","","好盈","","","","","","","","","","天蝎星","","","","老虎电机","飞越","","雄猫","","","","","新西达","","有棵树","中特威"];
+
+		PropellerLang=["","","","","植保DIY碳桨","折叠碳桨","大疆","双天","","","","","乾丰","","","","","","","","","","","","","","","","","老虎电机","","","","","","","",""];
+
+	}
+}
