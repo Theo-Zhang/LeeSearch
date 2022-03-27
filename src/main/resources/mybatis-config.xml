@@ -40,10 +40,13 @@
             </dataSource>
         </environment>
     </environments>
+
+<!--扫描mapper文件-->
     <mappers>
         <!--加载sql映射文件-->
         <mapper resource="BrandMapper.xml"/>
         <mapper resource="MotorTypeMapper.xml"/>
+        <mapper resource="GPowerMapper.xml"/>
 
 <!--        &lt;!&ndash;Mapper代理方式&ndash;&gt;-->
 <!--        <package name="mapper"/>-->

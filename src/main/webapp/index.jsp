@@ -115,11 +115,11 @@
         // 多维数组存储数据
         var list=[
             {"name":"自定义",
-                "value":"-1",
+                "value":"1",
             },
 
-            {"name":"朗宇",
-            "value":"1",
+            {"name":"SunnySky(朗宇)",
+            "value":"2",
             "motorType":[{"name":"X4112S V2-KV340",
                 "value":"1",
                 "propellerType":[{"name":"1447","value":"1447"},
@@ -141,26 +141,23 @@
                         {"name":"1555","value":"1555"},
                         {"name":"1660","value":"1660 "}]}]},
 
-            // {"name":"美国",
-            //     "value":"2",
-            //     "motorType":[{"name":"阿肯色",
-            //         "value":"990000",
-            //         "propellerType":[{"name":"纽约","value":"ny"},
-            //             {"name":"华盛顿","value":"hsd"},
-            //             {"name":"波士顿","value":"bsd"}]},
-            //
-            //         {"name":"阿哈哈",
-            //             "value":"980000",
-            //             "propellerType":[{"name":"AA","value":"ahd"},
-            //                 {"name":"BB","value":"abd"},
-            //                 {"name":"CC","value":"asjz"}]}]
-            //
-            // }
+            {"name":"大疆(DJI)",
+                "value":"3",
+                "motorType":[{"name":"6010-KV130",
+                    "value":"1",
+                    "propellerType":[{"name":"2270","value":"2270"}]},]
+
+            }
         ];
 
-        // 初始化函数，实现电机品牌下拉框效果
+        //初始化函数，实现电机品牌下拉框效果
         function init(){
             var _motor=document.getElementById("motor");
+            // var motorId=document.querySelector("motor").value;
+            // alert(motorId);
+            // if(motorId==-1){
+            //     document.getElementById("gPower").style.display="none";
+            // }
             for(var e in list){
                 var opt_1=new Option(list[e].name,list[e].value);
                 _motor.add(opt_1);
@@ -216,6 +213,27 @@
                 }
             }
         }
+
+        // 隐藏函数
+        function hide(){
+            var o = document.getElementById('motor');
+            var strValue = o.options[o.options.selectedIndex].value;
+
+            if(strValue == "1")
+            {
+                document.getElementById('motorType').style.display = "none";
+                document.getElementById('propellerType').style.display = "none";
+                document.getElementById('gPower').style.display = "inline";
+            }
+            else
+            {
+                document.getElementById('motorType').style.display = "inline";
+                document.getElementById('propellerType').style.display = "inline";
+                document.getElementById('gPower').style.display = "none";
+            }
+
+        }
+
 
     </script>
 
@@ -396,7 +414,7 @@
 
 
         <body onload="init();">
-        <select id="motor" onchange="toMotorType();" class="motor">
+        <select id="motor" onchange="toMotorType();hide()" class="motor">
             <option value="-1">--请选择电机品牌---</option>
         </select>
         <select id="motorType" onchange="toPropellerType();" class="motorType">

@@ -1,39 +1,42 @@
 package impl;
 
 
-import util.SqlSessionFactoryUtils;
-import mapper.BrandMapper;
+
+import mapper.GPowerMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import pojo.Brand;
-import service.BrandService;
+
+import pojo.GPower;
+
+import service.GPowerService;
+import util.SqlSessionFactoryUtils;
 
 import java.util.List;
 
-public class BrandServiceImpl implements BrandService {
+public class GPowerServiceImpl implements GPowerService {
 
     // 1.创建SqlSessionFactory 工厂对象
     SqlSessionFactory factory = SqlSessionFactoryUtils.getSqlSessionFactory();
 
 
+
     @Override
-    public List<Brand> selectAll() {
+    public List<GPower> selectById(int ids) {
+
+
         //2.获取SqlSession对象
         SqlSession sqlSession = factory.openSession();
         //3.获取BrandMapper
-        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        GPowerMapper mapper = sqlSession.getMapper(GPowerMapper.class);
 
         //4.调用方法
-        List<Brand> brands = mapper.selectAll();
+        List<GPower> GPower =  mapper.selectById(ids);
 
         //5.释放资源
         sqlSession.close();
 
-        return brands;
+        return GPower;
     }
-//
-//    @Override
-//    public Brand selectById() {
-//        return null;
-//    }
+
+
 }

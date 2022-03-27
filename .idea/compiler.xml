@@ -9,5 +9,8 @@
         <module name="leesearch" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="itheima_mybatis_anno" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

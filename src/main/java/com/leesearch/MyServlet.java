@@ -1,8 +1,15 @@
 package com.leesearch;
 
 
+import com.alibaba.fastjson.JSON;
 import com.mathworks.toolbox.javabuilder.*;
 import fitting.fittingResult;
+import com.alibaba.fastjson.JSON;
+import impl.GPowerServiceImpl;
+
+import pojo.GPower;
+import service.GPowerService;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,11 +18,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 // 服务器路径
 @WebServlet("/result")
 public class MyServlet extends HttpServlet {
+
+
+    private GPowerService gPowerService = new GPowerServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,12 +36,33 @@ public class MyServlet extends HttpServlet {
         float load_mass = Float.parseFloat(request.getParameter("load_mass"));
         float battery_mass = Float.parseFloat(request.getParameter("battery_mass"));
         float battery_energy_density = Float.parseFloat(request.getParameter("battery_energy_density"));
+        int propeller_type = Integer.parseInt(request.getParameter("battery_energy_density"));
 
         float totalMass = (uav_mass+load_mass+battery_mass)/uavs;
         System.out.println(totalMass);
 
-        // 获取功率拟合函数
+        // 1.调用service查询
+        int ids = propeller_type;
+        List<GPower> GPowers = gPowerService.selectById(ids);
+        //System.out.println(GPowers);
+        for(GPower gPower:GPowers){
+            System.out.println(gPower.getThrust());
+            System.out.println(gPower.getWatts());
+        }
+
+//        // 2.转为JSON
+//        String jsonString = JSON.toJSONString(GPowers);
+//
+//        // 3.写数据
+//        response.setContentType("text/json;charset=utf-8");//告知浏览器响应的数据是什么， 告知浏览器使用什么字符集进行解码
+//        response.getWriter().write(jsonString);
+//
+
+
+
+
         ArrayList<Double> powerArrayList=new ArrayList<>();
+        // 获取功率拟合函数
         int j = 0;
         for (int i = 1; i <= 10; i++) {
 
@@ -78,6 +110,15 @@ public class MyServlet extends HttpServlet {
             System.out.println(gArray[i]);
         }
 
+//
+//        for(int i = 0;i < GPower.size();i++){
+//
+//        }
+//
+//        for(GPower gPower:GPowers){
+//
+//            System.out.println(gPower.getWatts());
+//        }
 
 
         try {
@@ -137,6 +178,8 @@ public class MyServlet extends HttpServlet {
 
 
     }
+
+
 
     private static String getType(Object a) {
         return a.getClass().toString();

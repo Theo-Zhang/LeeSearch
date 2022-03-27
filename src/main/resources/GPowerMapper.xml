@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace:名称空间
+-->
+
+
+<mapper namespace="mapper.GPowerMapper">
+
+
+
+    <select id="selectById" parameterType="int" resultType="GPower">
+        select * from thrust_watts where thrustWattsId = #{thrustWattsId};
+
+     </select>
+
+
+</mapper>
