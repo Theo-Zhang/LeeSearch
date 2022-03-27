@@ -32,8 +32,8 @@ public class BrandServiceImpl implements BrandService {
         return brands;
     }
 
-    @Override
-    public Brand selectById() {
-        return null;
-    }
+//    @Override
+//    public Brand selectById() {
+//        return null;
+//    }
 }

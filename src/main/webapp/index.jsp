@@ -108,7 +108,114 @@
                 var text = obj.options[index].text; // 选中文本
                 var value = obj.options[index].value; // 选中值
             }
+    </script>
 
+
+    <script type="text/javascript">
+        // 多维数组存储数据
+        var list=[
+            {"name":"自定义",
+                "value":"-1",
+            },
+
+            {"name":"朗宇",
+            "value":"1",
+            "motorType":[{"name":"X4112S V2-KV340",
+                "value":"1",
+                "propellerType":[{"name":"1447","value":"1447"},
+                    {"name":"1555","value":"1555"},
+                    {"name":"1660","value":"1660"},
+                    {"name":"1762","value":"1762"},
+                ]},
+                {"name":"X4112S V2-KV400",
+                    "value":"2",
+                    "propellerType":[{"name":"1238","value":"1238"},
+                        {"name":"1447","value":"1447"},
+                        {"name":"1555","value":"1555"},
+                        {"name":"1660","value":"1660"}
+                        ]},
+
+                {"name":"X4112S V2-KV450",
+                    "value":"3",
+                    "propellerType":[{"name":"1447","value":"1447"},
+                        {"name":"1555","value":"1555"},
+                        {"name":"1660","value":"1660 "}]}]},
+
+            // {"name":"美国",
+            //     "value":"2",
+            //     "motorType":[{"name":"阿肯色",
+            //         "value":"990000",
+            //         "propellerType":[{"name":"纽约","value":"ny"},
+            //             {"name":"华盛顿","value":"hsd"},
+            //             {"name":"波士顿","value":"bsd"}]},
+            //
+            //         {"name":"阿哈哈",
+            //             "value":"980000",
+            //             "propellerType":[{"name":"AA","value":"ahd"},
+            //                 {"name":"BB","value":"abd"},
+            //                 {"name":"CC","value":"asjz"}]}]
+            //
+            // }
+        ];
+
+        // 初始化函数，实现电机品牌下拉框效果
+        function init(){
+            var _motor=document.getElementById("motor");
+            for(var e in list){
+                var opt_1=new Option(list[e].name,list[e].value);
+                _motor.add(opt_1);
+            }
+        }
+
+
+        // 选择电机类型函数，实现电机类型下拉框效果
+        function toMotorType(){
+            var _motor = document.getElementById("motor");
+            var _motorType=document.getElementById("motorType");
+            var _propellerType=document.getElementById("propellerType");
+            var v_motor=_motor.value;
+
+            _motorType.options.length=1;
+            _propellerType.options.length=1;
+
+            for(var e in list){
+                if(list[e].value==v_motor){
+                    for( var p in list[e].motorType){
+                        var opt_2=new Option(list[e].motorType[p].name,list[e].motorType[p].value);
+                        _motorType.add(opt_2);
+
+                    }
+                    break;
+                }
+            }
+        }
+
+        // 选择螺旋桨类型函数，实现螺旋桨类型下拉框效果
+        function toPropellerType(){
+            var _motor=document.getElementById("motor");
+            var _motorType=document.getElementById("motorType");
+            var _propellerType=document.getElementById("propellerType");
+
+            var v_motor=_motor.value;
+            var v_motorType=_motorType.value;
+
+            _propellerType.options.length=1;
+
+            for(var e in list){
+                if(list[e].value==v_motor){
+                    for( var p in list[e].motorType){
+                        if(list[e].motorType[p].value==v_motorType){
+                            for(var cc in list[e].motorType[p].propellerType){
+                                var opt_3=new Option(list[e].motorType[p].propellerType[cc].name,list[e].motorType[p].propellerType[cc].value);
+                                _propellerType.add(opt_3);
+                            }
+                            return;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
 
     </script>
 
@@ -236,7 +343,7 @@
 <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
 <script src="js/vue.js"></script>
 <script src="element-ui/lib/index.js"></script>
-<script src="js/motor.js"></script>
+<%--<script src="js/motor.js" type="text/javascript"></script>--%>
 
 <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>-->
 <!--&lt;!&ndash; 引入样式 &ndash;&gt;-->

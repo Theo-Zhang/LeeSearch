@@ -26,21 +26,21 @@ var list=[
                 {"name":"1555","value":"1555"},
                 {"name":"1660","value":"1660 "}]}]},
 
-    // {"name":"美国",
-    //     "value":"22",
-    //     "motorType":[{"name":"阿肯色",
-    //         "value":"990000",
-    //         "propellerType":[{"name":"纽约","value":"ny"},
-    //             {"name":"华盛顿","value":"hsd"},
-    //             {"name":"波士顿","value":"bsd"}]},
-    //
-    //         {"name":"阿哈哈",
-    //             "value":"980000",
-    //             "propellerType":[{"name":"AA","value":"ahd"},
-    //                 {"name":"BB","value":"abd"},
-    //                 {"name":"CC","value":"asjz"}]}]
-    //
-    // }
+    {"name":"美国",
+        "value":"2",
+        "motorType":[{"name":"阿肯色",
+            "value":"990000",
+            "propellerType":[{"name":"纽约","value":"ny"},
+                {"name":"华盛顿","value":"hsd"},
+                {"name":"波士顿","value":"bsd"}]},
+
+            {"name":"阿哈哈",
+                "value":"980000",
+                "propellerType":[{"name":"AA","value":"ahd"},
+                    {"name":"BB","value":"abd"},
+                    {"name":"CC","value":"asjz"}]}]
+
+    }
     ];
 
 function init(){

@@ -14,6 +14,7 @@ public interface BrandMapper {
     List<Brand> selectAll();
 
     Brand selectById(int id);
-
+    //带参数查询
     Brand select(@Param("id") int id,@Param("brandName") String brandName);
+
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/com.leesearch.SelectAllServlet")
+@WebServlet("/mapper")
 public class SelectAllServlet extends HttpServlet {
 
 
@@ -29,7 +29,7 @@ public class SelectAllServlet extends HttpServlet {
         String jsonString = JSON.toJSONString(brands);
 
         // 3.写数据
-        response.setContentType("text/json;charset=utf-8");
+        response.setContentType("text/json;charset=utf-8");//告知浏览器响应的数据是什么， 告知浏览器使用什么字符集进行解码
         response.getWriter().write(jsonString);
     }
 

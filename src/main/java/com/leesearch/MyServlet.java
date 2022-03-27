@@ -17,8 +17,6 @@ import java.util.ArrayList;
 @WebServlet("/result")
 public class MyServlet extends HttpServlet {
 
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
