@@ -36,7 +36,7 @@ public class MyServlet extends HttpServlet {
         float load_mass = Float.parseFloat(request.getParameter("load_mass"));
         float battery_mass = Float.parseFloat(request.getParameter("battery_mass"));
         float battery_energy_density = Float.parseFloat(request.getParameter("battery_energy_density"));
-        int propeller_type = Integer.parseInt(request.getParameter("battery_energy_density"));
+        int propeller_type = Integer.parseInt(request.getParameter("propellerType"));
 
         float totalMass = (uav_mass+load_mass+battery_mass)/uavs;
         System.out.println(totalMass);
@@ -45,10 +45,10 @@ public class MyServlet extends HttpServlet {
         int ids = propeller_type;
         List<GPower> GPowers = gPowerService.selectById(ids);
         //System.out.println(GPowers);
-        for(GPower gPower:GPowers){
-            System.out.println(gPower.getThrust());
-            System.out.println(gPower.getWatts());
-        }
+//        for(GPower gPower:GPowers){
+//            System.out.println(gPower.getThrust());
+//            System.out.println(gPower.getWatts());
+//        }
 
 //        // 2.转为JSON
 //        String jsonString = JSON.toJSONString(GPowers);
@@ -110,11 +110,25 @@ public class MyServlet extends HttpServlet {
             System.out.println(gArray[i]);
         }
 
-//
-//        for(int i = 0;i < GPower.size();i++){
-//
-//        }
-//
+//        GPower gPower = new GPower();
+        if(GPowers.size()>0){
+            gArray=new double[GPowers.size()];
+            powerArray=new double[GPowers.size()];
+        }
+        System.out.println(GPowers.size());
+        for(int i = 0;i < GPowers.size();i++){
+            powerArray[i]=Double.parseDouble(GPowers.get(i).getWatts());
+            gArray[i]= Double.parseDouble(GPowers.get(i).getThrust());
+        }
+
+        for (int i = 0; i < gArrayList.size(); i++) {
+            System.out.println(gArray[i]);
+        }
+        for (int i = 0; i < powerArrayList.size(); i++) {
+            System.out.println(powerArray[i]);
+        }
+
+
 //        for(GPower gPower:GPowers){
 //
 //            System.out.println(gPower.getWatts());

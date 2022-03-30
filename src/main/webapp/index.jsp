@@ -22,7 +22,7 @@
                 //如果名称不为空
                 if(name != null && name != ""){
                     input = document.createElement('<input  name="' + name + '">');//IE代码
-                    input.style.width="40px";
+                    input.style.width="120px";
 
                 }else{
                     input = document.createElement('<input');//IE代码
@@ -33,7 +33,7 @@
                 if(name != null && name != ""){
                     input.name = name+num1;
                 }
-                input.style.width="40px";
+                input.style.width="120px";
             }
             //如果输入type的元素为空
             if(type == null || type == ""){
@@ -63,7 +63,7 @@
             if(document.all){
                 if(name != null && name != ""){
                     input = document.createElement('<input  name="' + name + '">');//IE代码
-                    input.style.width="40px";
+                    input.style.width="120px";
 
                 }else{
                     input = document.createElement('<input');//IE代码
@@ -73,7 +73,7 @@
                 if(name != null && name != ""){
                     input.name = name+num2;
                 }
-                input.style.width="40px";
+                input.style.width="120px";
 
             }
             if(type == null || type == ""){
@@ -145,7 +145,7 @@
                 "value":"3",
                 "motorType":[{"name":"6010-KV130",
                     "value":"1",
-                    "propellerType":[{"name":"2270","value":"2270"}]},]
+                    "propellerType":[{"name":"2270","value":"2"}]},]
 
             }
         ];
@@ -224,12 +224,14 @@
                 document.getElementById('motorType').style.display = "none";
                 document.getElementById('propellerType').style.display = "none";
                 document.getElementById('gPower').style.display = "inline";
+                document.getElementById('gPower').ariaRequired = "true";
             }
             else
             {
                 document.getElementById('motorType').style.display = "inline";
                 document.getElementById('propellerType').style.display = "inline";
                 document.getElementById('gPower').style.display = "none";
+                document.getElementById('gPower').ariaRequired = "false";
             }
 
         }
@@ -420,19 +422,19 @@
         <select id="motorType" onchange="toPropellerType();" class="motorType">
             <option value="-1">--请选择电机型号---</option>
         </select>
-        <select id="propellerType" class="propellerType">
+        <select id="propellerType" name="propellerType" class="propellerType">
             <option value="-1">--请选择螺旋桨规格---</option>
         </select>
 
         </body>
         <br>
 
-        <div id="gPower" style="display: inline" onclick="addElement()">
-            功率：
+        <div id="gPower" style="display: none" onclick="addElement()" >
+            功率：<br>
             <div id="power" style="display: inline">
-                <input type="text" style="width: 40px" name="power1" value="" oninput = "clearNoNum(this)" required="required">W
-                <input type="text" style="width: 40px" name="power2" value="" oninput = "clearNoNum(this)" required="required">W
-                <input type="text" style="width: 40px" name="power3" value="" oninput = "clearNoNum(this)" required="required">W
+                <input type="text" style="width: 120px" name="power1" value="" oninput = "clearNoNum(this)" >W
+                <input type="text" style="width: 120px" name="power2" value="" oninput = "clearNoNum(this)" >W
+                <input type="text" style="width: 120px" name="power3" value="" oninput = "clearNoNum(this)" >W
             </div>
             <div style="display: inline" class="addPower">
                 <input  type="button" onclick="generateInputPower('text','ids','power')" value="+">
@@ -441,16 +443,16 @@
 
             <div id="g" style="display: inline" class="addG">
                 <br>
-                拉力：
-                <input type="text" style="width: 40px" name="g1" value="" oninput = "clearNoNum(this)" required="required">kg
-                <input type="text" style="width: 40px" name="g2" value="" oninput = "clearNoNum(this)" required="required">kg
-                <input type="text" style="width: 40px" name="g3" value="" oninput = "clearNoNum(this)" required="required">kg
+                拉力：<br>
+                <input type="text" style="width: 120px" name="g1" value="" oninput = "clearNoNum(this)" >kg
+                <input type="text" style="width: 120px" name="g2" value="" oninput = "clearNoNum(this)" >kg
+                <input type="text" style="width: 120px" name="g3" value="" oninput = "clearNoNum(this)" >kg
             </div>
 
 
 
             <div style="display: inline">
-                <input  type="button"  onclick="generateInputThrust('text','ids','g')" value="+">
+                <input  type="button" onclick="generateInputThrust('text','ids','g')" value="+">
             </div>
             <br>
         </div>
