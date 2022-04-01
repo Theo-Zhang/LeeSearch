@@ -9,13 +9,10 @@
 
 
 <mapper namespace="mapper.GPowerMapper">
-
-
-
+<!--     查找数据库的拉力功率数据-->
     <select id="selectById" parameterType="int" resultType="GPower">
         select * from thrust_watts where thrustWattsId = #{thrustWattsId};
 
      </select>
-
 
 </mapper>

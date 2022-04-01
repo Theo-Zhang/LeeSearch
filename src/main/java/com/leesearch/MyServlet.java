@@ -1,7 +1,7 @@
 package com.leesearch;
 
 
-import com.alibaba.fastjson.JSON;
+
 import com.mathworks.toolbox.javabuilder.*;
 import fitting.fittingResult;
 import com.alibaba.fastjson.JSON;
@@ -36,20 +36,29 @@ public class MyServlet extends HttpServlet {
         float load_mass = Float.parseFloat(request.getParameter("load_mass"));
         float battery_mass = Float.parseFloat(request.getParameter("battery_mass"));
         float battery_energy_density = Float.parseFloat(request.getParameter("battery_energy_density"));
-        int propeller_type = Integer.parseInt(request.getParameter("propellerType"));
+
+
 
         float totalMass = (uav_mass+load_mass+battery_mass)/uavs;
         System.out.println(totalMass);
 
-        // 1.调用service查询
+        // 获取的前端数据
+        int propeller_type = Integer.parseInt(request.getParameter("propellerType"));
+        // 调用service查询后台数据库
         int ids = propeller_type;
         List<GPower> GPowers = gPowerService.selectById(ids);
+
+
+
         //System.out.println(GPowers);
 //        for(GPower gPower:GPowers){
 //            System.out.println(gPower.getThrust());
 //            System.out.println(gPower.getWatts());
 //        }
 
+        // 1.调用service查询
+//        int ids = propeller_type;
+//        List<GPower> GPowers = gPowerService.selectById(ids);
 //        // 2.转为JSON
 //        String jsonString = JSON.toJSONString(GPowers);
 //
@@ -110,17 +119,19 @@ public class MyServlet extends HttpServlet {
             System.out.println(gArray[i]);
         }
 
-//        GPower gPower = new GPower();
+        // 判断前端获取数据库数据是否存在
         if(GPowers.size()>0){
             gArray=new double[GPowers.size()];
             powerArray=new double[GPowers.size()];
         }
+        // 测试：输出获取的数据库数据的大小
         System.out.println(GPowers.size());
+        // 获取数据库的数据
         for(int i = 0;i < GPowers.size();i++){
             powerArray[i]=Double.parseDouble(GPowers.get(i).getWatts());
             gArray[i]= Double.parseDouble(GPowers.get(i).getThrust());
         }
-
+        // 测试：输出获取的数据库数据
         for (int i = 0; i < gArrayList.size(); i++) {
             System.out.println(gArray[i]);
         }

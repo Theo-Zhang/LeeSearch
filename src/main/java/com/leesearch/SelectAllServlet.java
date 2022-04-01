@@ -45,7 +45,6 @@ public class SelectAllServlet extends HttpServlet {
             System.out.println(gPower.getWatts());
         }
 
-
         // 2.转为JSON
         String jsonString = JSON.toJSONString(GPowers);
 

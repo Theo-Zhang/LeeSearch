@@ -1,13 +1,11 @@
 package mapper;
 
 import pojo.GPower;
-import pojo.MotorType;
+
 
 import java.util.List;
-
+// Mapper接口
 public interface GPowerMapper {
-
-
     List<GPower> selectById(int id);
 
 }

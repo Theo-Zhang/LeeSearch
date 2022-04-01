@@ -153,11 +153,6 @@
         //初始化函数，实现电机品牌下拉框效果
         function init(){
             var _motor=document.getElementById("motor");
-            // var motorId=document.querySelector("motor").value;
-            // alert(motorId);
-            // if(motorId==-1){
-            //     document.getElementById("gPower").style.display="none";
-            // }
             for(var e in list){
                 var opt_1=new Option(list[e].name,list[e].value);
                 _motor.add(opt_1);
@@ -216,9 +211,11 @@
 
         // 隐藏函数
         function hide(){
+            // 获取motor的ID对象
             var o = document.getElementById('motor');
+            // 获取其对象的选项值
             var strValue = o.options[o.options.selectedIndex].value;
-
+            //隐藏和显示gPower框
             if(strValue == "1")
             {
                 document.getElementById('motorType').style.display = "none";

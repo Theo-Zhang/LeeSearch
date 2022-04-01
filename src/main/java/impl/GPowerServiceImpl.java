@@ -18,8 +18,6 @@ public class GPowerServiceImpl implements GPowerService {
     // 1.创建SqlSessionFactory 工厂对象
     SqlSessionFactory factory = SqlSessionFactoryUtils.getSqlSessionFactory();
 
-
-
     @Override
     public List<GPower> selectById(int ids) {
 
@@ -37,6 +35,4 @@ public class GPowerServiceImpl implements GPowerService {
 
         return GPower;
     }
-
-
 }
