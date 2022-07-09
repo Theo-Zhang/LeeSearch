@@ -35,7 +35,7 @@ public class MyServlet extends HttpServlet {
         float uav_mass = Float.parseFloat(request.getParameter("uav_mass"));
         float load_mass = Float.parseFloat(request.getParameter("load_mass"));
         float battery_mass = Float.parseFloat(request.getParameter("battery_mass"));
-        float battery_energy_density = Float.parseFloat(request.getParameter("battery_energy_density"));
+        float battery_energy_density = Float.parseFloat(request.getParameter("battery_energy"))/Float.parseFloat(request.getParameter("battery_mass"));
 
 
 

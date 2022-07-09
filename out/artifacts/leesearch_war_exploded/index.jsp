@@ -407,12 +407,13 @@
             <option value="8">8</option>
         </select>
 
-        电池能量密度：
-        <input type="text" name="battery_energy_density" value="" oninput = "clearNoNum(this)" required="required">Wh/kg
+        电池能量：
+        <input type="text" name="battery_energy" value="" oninput = "clearNoNum(this)" required="required">Wh
         <br>
 
 
         <body onload="init();">
+        拉力和功率：
         <select id="motor" onchange="toMotorType();hide()" class="motor">
             <option value="-1">--请选择电机品牌---</option>
         </select>
